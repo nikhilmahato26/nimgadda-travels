@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Wind,
   ShowerHead,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import RoomGallery from "@/components/RoomGallery";
 import Reveal from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -62,28 +62,11 @@ export default function StaySection({ rooms }) {
                       reversed && "lg:order-2"
                     )}
                   >
-                    {room.image ? (
-                      <Image
-                        src={room.image}
-                        alt={`${room.name} at Nimmagadda Vari Charitable Trust`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    ) : (
-                      // Room photography is still with the client. Rather than
-                      // a grey box, the tile carries the room name until the
-                      // real picture lands in /public/images/room-<slug>.jpg
-                      // (see the header comment in data/rooms.js).
-                      <div className="flex h-full flex-col items-center justify-center gap-2 p-8 text-center">
-                        <span className="font-display text-2xl font-extrabold tracking-tight text-accent-ink">
-                          {room.name}
-                        </span>
-                        <span className="text-[14px] text-muted">
-                          Photographs coming shortly
-                        </span>
-                      </div>
-                    )}
+                    <RoomGallery
+                      images={room.gallery}
+                      name={room.name}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
 
                   <div

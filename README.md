@@ -53,18 +53,23 @@ of printing a made-up value. Fill them in and the pages update themselves.
 | `data/packages.js` -> `grand-yatra` | Duration. Every other package is 5 days / 6 nights; this one was quoted without a length. |
 | `data/packages.js` -> `kasi-yatra` | The route. It was quoted as "same as above", which is ambiguous about whether the places match the Grand Yatra. |
 
-Room photography is also outstanding. `data/rooms.js` has `image: null` for all
-three categories, and the room tiles fall back to a typographic panel. To add a
-photo: drop the file straight into `public/images/` (flat, same folder as
-everything else - there is no `/rooms` subfolder), name it
-`room-<slug>.jpg` (`room-ac-room.jpg`, `room-deluxe.jpg`,
-`room-super-deluxe.jpg`), then set that room's `image` field in
-`data/rooms.js` to the matching `/images/room-<slug>.jpg` path. Full detail is
-in that file's header comment. Until a photo lands, each room page shows the
-streets around the building instead, clearly captioned so it is never mistaken
-for the room itself.
+Room photography is also outstanding for two of the three categories. Each
+room's `gallery` array in `data/rooms.js` holds its photo paths; an empty
+array falls back to a typographic panel. To add photos for a room: drop the
+files straight into `public/images/` (flat, same folder as everything else -
+there is no `/rooms` subfolder), name them `room-<slug>-<n>.jpg`
+(`room-deluxe-1.jpg`, `room-deluxe-2.jpg`, ...), then list those paths in that
+room's `gallery` array. One photo renders as a single image; two or more
+become a slider automatically, on the home page card, the `/rooms` list, and
+the room's own page, with no other code to touch. Full detail is in that
+file's header comment. Until photos land, each room page shows the streets
+around the building instead, clearly captioned so it is never mistaken for
+the room itself.
 
-The same `image` field is what seeds into the database once one is connected
+AC Room already has three real photos the client sent, so it can serve as the
+reference for what "done" looks like for the other two.
+
+The same `gallery` field is what seeds into the database once one is connected
 (`prisma/seed.js` copies every field on these objects as-is), so this is the
 only step: nothing in `lib/content.js`, the Prisma schema, or any room
 component needs to change, before or after the database goes live.

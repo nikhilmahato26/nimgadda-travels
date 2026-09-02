@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   Wind,
@@ -13,6 +12,7 @@ import {
 import PageHeader from "@/components/site/PageHeader";
 import { Container, Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import RoomGallery from "@/components/RoomGallery";
 import Reveal from "@/components/ui/Reveal";
 import EnquiryForm from "@/components/EnquiryForm";
 import { getRooms } from "@/lib/content";
@@ -73,28 +73,11 @@ export default async function RoomsPage() {
               <Reveal key={room.slug} step={i}>
                 <article className="grid overflow-hidden rounded-card border border-line bg-surface-3 lg:grid-cols-[1fr_1.15fr]">
                   <div className="relative aspect-[16/10] w-full bg-surface-2 lg:aspect-auto lg:min-h-[320px]">
-                    {room.image ? (
-                      <Image
-                        src={room.image}
-                        alt={`${room.name} at Nimmagadda Vari Charitable Trust`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 45vw"
-                        className="object-cover"
-                      />
-                    ) : (
-                      // Room photography is still with the client. Rather than
-                      // a grey box, the tile carries the room name until the
-                      // real picture lands in /public/images/room-<slug>.jpg
-                      // (see the header comment in data/rooms.js).
-                      <div className="flex h-full flex-col items-center justify-center gap-2 p-8 text-center">
-                        <span className="font-display text-2xl font-extrabold tracking-tight text-accent-ink">
-                          {room.name}
-                        </span>
-                        <span className="text-[14px] text-muted">
-                          Photographs coming shortly
-                        </span>
-                      </div>
-                    )}
+                    <RoomGallery
+                      images={room.gallery}
+                      name={room.name}
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                    />
                   </div>
 
                   <div className="p-7 lg:p-10">

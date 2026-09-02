@@ -1,23 +1,25 @@
 // The three room categories the trust offers, in ascending order.
 //
-// Photography of the rooms themselves is still with the client, so `image` is
-// null and the room tiles fall back to a typographic panel. To add a photo:
+// `gallery` is an array of photo paths, most recent last-added at the end.
+// Photography is still coming in room by room, so most rooms have an empty
+// array and their tiles fall back to a typographic panel. To add photos for
+// a room:
 //
-//   1. Drop the file straight into /public/images/ (flat, same folder as
+//   1. Drop the files straight into /public/images/ (flat, same folder as
 //      every other photo on the site, e.g. kashi-temple.jpg, fleet-dzire.jpg
 //      - there is no /rooms subfolder).
-//   2. Name it room-<slug>.jpg, matching the room's `slug` below:
-//        room-ac-room.jpg, room-deluxe.jpg, room-super-deluxe.jpg
-//      Landscape, at least 1600px wide (matches the crop these cards use:
-//      4:3 here on the home page, 4:3 again on its own /rooms/<slug> page).
-//   3. Change that room's `image: null` below to the matching
-//      "/images/room-<slug>.jpg" string. Nothing else needs to change: the
-//      room card, the detail page and the placeholder fallback all already
-//      key off this one field.
+//   2. Name them room-<slug>-<n>.jpg, matching the room's `slug` below and
+//      counting from 1: room-deluxe-1.jpg, room-deluxe-2.jpg, and so on.
+//      Any orientation works; RoomGallery crops to fit. At least 1200px on
+//      the long edge.
+//   3. Add each path to that room's `gallery` array below, in the order they
+//      should appear. One photo renders as a single image; two or more
+//      automatically become a slider, on the home page card and on the
+//      room's own page, with no other code to touch.
 //
 // This is also the ONLY step needed when the database goes live. seed.js
 // spreads every field of these objects straight into the Room table, so
-// whatever path sits in `image` here becomes the DB value verbatim the next
+// whatever sits in `gallery` here becomes the DB value verbatim the next
 // time `npm run db:seed` runs - there is no separate image pipeline to wire
 // up, and no code in lib/content.js, the Prisma schema, or any room
 // component needs to change either now or then.
@@ -40,7 +42,11 @@ export const rooms = [
     name: "AC Room",
     tagline: "The room most families book",
     occupancy: "2 guests, twin sharing",
-    image: null, // -> "/images/room-ac-room.jpg"
+    gallery: [
+      "/images/room-ac-room-1.jpg",
+      "/images/room-ac-room-2.jpg",
+      "/images/room-ac-room-3.jpg",
+    ],
     summary:
       "An air-conditioned room with lift access and car parking, close enough to Kashi Vishwanath that elders can walk to darshan.",
     description: [
@@ -61,7 +67,7 @@ export const rooms = [
     name: "Deluxe Room",
     tagline: "More room to spread out",
     occupancy: "2 to 3 guests",
-    image: null, // -> "/images/room-deluxe.jpg"
+    gallery: [], // -> ["/images/room-deluxe-1.jpg", ...]
     summary:
       "The same location and the same comforts, in a larger room for families who want more space than the base category.",
     description: [
@@ -83,7 +89,7 @@ export const rooms = [
     name: "Super Deluxe Room",
     tagline: "Best for elders and longer stays",
     occupancy: "2 to 4 guests",
-    image: null, // -> "/images/room-super-deluxe.jpg"
+    gallery: [], // -> ["/images/room-super-deluxe-1.jpg", ...]
     summary:
       "Our largest category, with a bigger bathroom, suited to families travelling with elders who need room to move.",
     description: [
@@ -127,8 +133,32 @@ export const stayHighlights = [
   },
 ];
 
-// Shown on each room page: the surroundings, since the rooms themselves are not
-// photographed yet. Clearly framed as the neighbourhood, not the property.
+// Real, non-negotiated facts about how a booking actually runs here. Shown as
+// the "Policies" tab on a room page - honest substitutes for the cancellation
+// grids and instant-book terms a hotel OTA template would show, since none of
+// that machinery exists: booking is a phone call, not a checkout flow.
+export const roomPolicies = [
+  {
+    title: "How a booking is confirmed",
+    body: "By phone or WhatsApp, not an online payment. Tell us your dates and the room is held once you confirm.",
+  },
+  {
+    title: "Rates",
+    body: "Quoted when you call, because they change with the season and with how many nights you stay. Guests on a yatra package already have the room in the package price.",
+  },
+  {
+    title: "Check-in and check-out",
+    body: "Arranged directly with the trust around your train or bus timing. Late night arrivals are fine, somebody is awake.",
+  },
+  {
+    title: "Changes to your stay",
+    body: "Call the trust directly. The same people who took the booking can change it.",
+  },
+];
+
+// Shown alongside the room's own photographs (or in place of them, for a room
+// not yet photographed): the surroundings, so the page still shows something
+// real rather than a placeholder-only page.
 export const neighbourhood = [
   {
     image: "/images/kashi-vishwanath.jpg",

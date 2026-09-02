@@ -26,7 +26,7 @@ model Room {
   summary     String
   description Json // array of paragraphs
   occupancy   String
-  image       String?
+  gallery     Json // array of photo paths, [] if none yet
   amenities   Json
   order       Int      @default(0)
   createdAt   DateTime @default(now())
