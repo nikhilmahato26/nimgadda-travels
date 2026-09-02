@@ -73,7 +73,8 @@ export default function StaySection({ rooms }) {
                     ) : (
                       // Room photography is still with the client. Rather than
                       // a grey box, the tile carries the room name until the
-                      // real picture lands in /public/images/rooms/.
+                      // real picture lands in /public/images/room-<slug>.jpg
+                      // (see the header comment in data/rooms.js).
                       <div className="flex h-full flex-col items-center justify-center gap-2 p-8 text-center">
                         <span className="font-display text-2xl font-extrabold tracking-tight text-accent-ink">
                           {room.name}

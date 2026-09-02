@@ -54,10 +54,20 @@ of printing a made-up value. Fill them in and the pages update themselves.
 | `data/packages.js` -> `kasi-yatra` | The route. It was quoted as "same as above", which is ambiguous about whether the places match the Grand Yatra. |
 
 Room photography is also outstanding. `data/rooms.js` has `image: null` for all
-three categories, and the room tiles fall back to a typographic panel. Drop the
-photos into `public/images/rooms/` and set the paths. Until then each room page
-shows the streets around the building instead, clearly captioned so it is never
-mistaken for the room itself.
+three categories, and the room tiles fall back to a typographic panel. To add a
+photo: drop the file straight into `public/images/` (flat, same folder as
+everything else - there is no `/rooms` subfolder), name it
+`room-<slug>.jpg` (`room-ac-room.jpg`, `room-deluxe.jpg`,
+`room-super-deluxe.jpg`), then set that room's `image` field in
+`data/rooms.js` to the matching `/images/room-<slug>.jpg` path. Full detail is
+in that file's header comment. Until a photo lands, each room page shows the
+streets around the building instead, clearly captioned so it is never mistaken
+for the room itself.
+
+The same `image` field is what seeds into the database once one is connected
+(`prisma/seed.js` copies every field on these objects as-is), so this is the
+only step: nothing in `lib/content.js`, the Prisma schema, or any room
+component needs to change, before or after the database goes live.
 
 The fleet photographs are stock images of each vehicle type, not the trust's own
 vehicles. Replace them in `data/fleet.js` when the client sends real ones. Nine

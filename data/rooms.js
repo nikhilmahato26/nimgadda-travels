@@ -1,8 +1,26 @@
 // The three room categories the trust offers, in ascending order.
 //
 // Photography of the rooms themselves is still with the client, so `image` is
-// null and the room tiles fall back to a typographic panel. Drop the photos
-// into /public/images/rooms/ and set the path to light them up.
+// null and the room tiles fall back to a typographic panel. To add a photo:
+//
+//   1. Drop the file straight into /public/images/ (flat, same folder as
+//      every other photo on the site, e.g. kashi-temple.jpg, fleet-dzire.jpg
+//      - there is no /rooms subfolder).
+//   2. Name it room-<slug>.jpg, matching the room's `slug` below:
+//        room-ac-room.jpg, room-deluxe.jpg, room-super-deluxe.jpg
+//      Landscape, at least 1600px wide (matches the crop these cards use:
+//      4:3 here on the home page, 4:3 again on its own /rooms/<slug> page).
+//   3. Change that room's `image: null` below to the matching
+//      "/images/room-<slug>.jpg" string. Nothing else needs to change: the
+//      room card, the detail page and the placeholder fallback all already
+//      key off this one field.
+//
+// This is also the ONLY step needed when the database goes live. seed.js
+// spreads every field of these objects straight into the Room table, so
+// whatever path sits in `image` here becomes the DB value verbatim the next
+// time `npm run db:seed` runs - there is no separate image pipeline to wire
+// up, and no code in lib/content.js, the Prisma schema, or any room
+// component needs to change either now or then.
 //
 // No room rates were supplied, only the per person package prices, so the
 // pages ask guests to call rather than printing a number nobody quoted.
@@ -22,7 +40,7 @@ export const rooms = [
     name: "AC Room",
     tagline: "The room most families book",
     occupancy: "2 guests, twin sharing",
-    image: null,
+    image: null, // -> "/images/room-ac-room.jpg"
     summary:
       "An air-conditioned room with lift access and car parking, close enough to Kashi Vishwanath that elders can walk to darshan.",
     description: [
@@ -43,7 +61,7 @@ export const rooms = [
     name: "Deluxe Room",
     tagline: "More room to spread out",
     occupancy: "2 to 3 guests",
-    image: null,
+    image: null, // -> "/images/room-deluxe.jpg"
     summary:
       "The same location and the same comforts, in a larger room for families who want more space than the base category.",
     description: [
@@ -65,7 +83,7 @@ export const rooms = [
     name: "Super Deluxe Room",
     tagline: "Best for elders and longer stays",
     occupancy: "2 to 4 guests",
-    image: null,
+    image: null, // -> "/images/room-super-deluxe.jpg"
     summary:
       "Our largest category, with a bigger bathroom, suited to families travelling with elders who need room to move.",
     description: [
