@@ -1,15 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, X, ArrowRight } from "lucide-react";
+import {
+  Check,
+  X,
+  ArrowRight,
+  CalendarDays,
+  MapPin,
+  BedDouble,
+  UtensilsCrossed,
+  Milestone,
+} from "lucide-react";
 import { Container, Section } from "@/components/ui/Section";
-import { Button } from "@/components/ui/Button";
+import { PackageCard } from "@/components/PackageCard";
+import PackageBookingCard from "@/components/PackageBookingCard";
 import EnquiryForm from "@/components/EnquiryForm";
+import Reveal from "@/components/ui/Reveal";
 import { getPackages, getPackageBySlug } from "@/lib/content";
 import { rupees } from "@/lib/utils";
-import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
-const UNCONFIRMED = "Duration confirmed when you book";
+const UNCONFIRMED_DURATION = "Duration confirmed when you book";
 
 export async function generateStaticParams() {
   const packages = await getPackages();
@@ -33,10 +43,27 @@ export default async function PackageDetailPage({ params }) {
   const pkg = await getPackageBySlug(slug);
   if (!pkg) notFound();
 
+  const allPackages = await getPackages();
+  const others = allPackages.filter((p) => p.slug !== pkg.slug);
+
+  // Quick facts, four tiles to match the icon-grid pattern used elsewhere on
+  // the site (the room pages' "The space"). Duration and route status repeat
+  // what is in the meta row above, which is normal for a page like this: the
+  // meta row is the quick read, this grid is the scannable one.
+  const quickFacts = [
+    { icon: CalendarDays, label: pkg.duration ?? UNCONFIRMED_DURATION },
+    {
+      icon: Milestone,
+      label: pkg.places ? `${pkg.places.length} places` : "Route on request",
+    },
+    { icon: BedDouble, label: pkg.stay },
+    { icon: UtensilsCrossed, label: pkg.meals },
+  ];
+
   return (
     <>
-      <header className="border-b border-line">
-        <Container className="py-12 lg:py-16">
+      <Section className="pb-0">
+        <Container>
           <Link
             href="/packages"
             className="text-[14px] font-medium text-muted transition-colors hover:text-accent-ink"
@@ -44,134 +71,176 @@ export default async function PackageDetailPage({ params }) {
             All packages
           </Link>
 
-          <div className="mt-6 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
-            <div>
-              <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
-                {pkg.name}
-              </h1>
-              <p className="mt-3 text-[15px] font-medium text-muted">
-                {pkg.duration ?? UNCONFIRMED}
-              </p>
-              <p className="mt-5 max-w-[56ch] text-[17px] leading-relaxed text-muted sm:text-lg">
-                {pkg.summary}
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <p>
-                  <span className="font-display text-4xl font-extrabold tracking-tight">
-                    {rupees(pkg.pricePerPerson)}
-                  </span>{" "}
-                  <span className="text-[15px] font-medium text-muted">
-                    per person
-                  </span>
-                </p>
-                <Button href={whatsappLink(whatsappMessages.package(pkg.name))}>
-                  Ask on WhatsApp
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
-              <Image
-                src={pkg.image}
-                alt={pkg.imageAlt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+          <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-4xl">
+            {pkg.name}
+          </h1>
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays size={15} strokeWidth={1.5} aria-hidden="true" />
+              {pkg.duration ?? UNCONFIRMED_DURATION}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin size={15} strokeWidth={1.5} aria-hidden="true" />
+              {pkg.places
+                ? `${pkg.places[0]} to ${pkg.places[pkg.places.length - 1]}`
+                : "Route on request"}
+            </span>
           </div>
-        </Container>
-      </header>
 
-      <Section>
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_20rem] lg:items-start lg:gap-12">
             <div>
-              <h2 className="font-display text-2xl font-extrabold tracking-tight">
-                Where you go
-              </h2>
-              {pkg.places ? (
-                <ul className="mt-5 flex flex-wrap gap-2.5">
-                  {pkg.places.map((place) => (
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-card border border-line bg-surface-2">
+                <Image
+                  src={pkg.image}
+                  alt={pkg.imageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 62vw"
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Jump links rather than JS-swapped tabs: every section stays
+                  in the server HTML and readable without clicking anything,
+                  the nav just scrolls to it. Same pattern as the room pages. */}
+              <nav
+                aria-label="Package sections"
+                className="mt-8 flex gap-2 border-b border-line"
+              >
+                {[
+                  ["#overview", "Overview"],
+                  ["#route", "Route"],
+                  ["#included", "What is included"],
+                ].map(([href, label]) => (
+                  <a
+                    key={href}
+                    href={href}
+                    className="border-b-2 border-transparent px-1 pb-3 text-[14px] font-semibold text-muted transition-colors hover:border-accent-ink hover:text-text"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </nav>
+
+              <div id="overview" className="pt-8">
+                <p className="text-[16px] leading-relaxed text-muted">
+                  {pkg.summary}
+                </p>
+
+                <ul className="mt-6 grid grid-cols-2 gap-3">
+                  {quickFacts.map(({ icon: Icon, label }) => (
                     <li
-                      key={place}
-                      className="rounded-full border border-line bg-surface-3 px-4 py-2 text-[15px] font-medium"
+                      key={label}
+                      className="flex flex-col items-center gap-2 rounded-card border border-line bg-surface-3 px-4 py-5 text-center"
                     >
-                      {place}
+                      <Icon
+                        size={20}
+                        strokeWidth={1.5}
+                        className="text-accent-ink"
+                        aria-hidden="true"
+                      />
+                      <span className="text-[14px] font-medium">{label}</span>
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-muted">
-                  The route is set with you when you book, around the days you
-                  have and the darshans your family wants. Call the trust and we
-                  will walk you through it.
-                </p>
-              )}
+              </div>
 
-              <h2 className="mt-12 font-display text-2xl font-extrabold tracking-tight">
-                Rooms and meals
-              </h2>
-              <dl className="mt-5 space-y-5">
-                <div>
-                  <dt className="text-[14px] font-semibold uppercase tracking-[0.1em] text-accent-ink">
-                    Stay
-                  </dt>
-                  <dd className="mt-1.5 text-[16px] leading-relaxed text-muted">
-                    {pkg.stay}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[14px] font-semibold uppercase tracking-[0.1em] text-accent-ink">
-                    Meals
-                  </dt>
-                  <dd className="mt-1.5 text-[16px] leading-relaxed text-muted">
-                    {pkg.meals}
-                  </dd>
-                </div>
-              </dl>
+              <div id="route" className="border-t border-line pt-8 mt-10">
+                <h2 className="font-display text-xl font-extrabold tracking-tight">
+                  Where you go
+                </h2>
+
+                {pkg.places ? (
+                  <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-3">
+                    {pkg.places.map((place, i) => (
+                      <li key={place} className="flex items-center gap-2">
+                        <span className="rounded-pill border border-line bg-surface-3 px-4 py-2 text-[15px] font-medium">
+                          {place}
+                        </span>
+                        {i < pkg.places.length - 1 ? (
+                          <ArrowRight
+                            size={15}
+                            strokeWidth={1.5}
+                            className="shrink-0 text-muted"
+                            aria-hidden="true"
+                          />
+                        ) : null}
+                      </li>
+                    ))}
+                  </ol>
+                ) : (
+                  <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-muted">
+                    The route is set with you when you book, around the days
+                    you have and the darshans your family wants. Call the
+                    trust and we will walk you through it.
+                  </p>
+                )}
+              </div>
+
+              <div id="included" className="border-t border-line pt-8 mt-10">
+                <h2 className="font-display text-xl font-extrabold tracking-tight">
+                  What the price covers
+                </h2>
+                <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {pkg.inclusions.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2.5 text-[15px] leading-relaxed"
+                    >
+                      <Check
+                        size={16}
+                        strokeWidth={2}
+                        className="shrink-0 text-accent-ink"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="mt-8 font-display text-[15px] font-bold tracking-tight">
+                  What it does not cover
+                </h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {pkg.exclusions.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2.5 text-[15px] leading-relaxed text-muted"
+                    >
+                      <X
+                        size={16}
+                        strokeWidth={2}
+                        className="shrink-0"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="rounded-card border border-line bg-surface-3 p-7 lg:p-8">
-              <h2 className="font-display text-xl font-extrabold tracking-tight">
-                What the price covers
-              </h2>
-              <ul className="mt-5 space-y-3">
-                {pkg.inclusions.map((item) => (
-                  <li key={item} className="flex gap-3 text-[15px] leading-relaxed">
-                    <Check
-                      size={17}
-                      strokeWidth={2}
-                      className="mt-0.5 shrink-0 text-accent-ink"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <aside className="lg:sticky lg:top-24">
+              <PackageBookingCard
+                packageName={pkg.name}
+                pricePerPerson={pkg.pricePerPerson}
+              />
+            </aside>
+          </div>
+        </Container>
+      </Section>
 
-              <h3 className="mt-8 border-t border-line pt-7 font-display text-xl font-extrabold tracking-tight">
-                What it does not cover
-              </h3>
-              <ul className="mt-5 space-y-3">
-                {pkg.exclusions.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-[15px] leading-relaxed text-muted"
-                  >
-                    <X
-                      size={17}
-                      strokeWidth={2}
-                      className="mt-0.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <Section className="border-t border-line">
+        <Container>
+          <h2 className="font-display text-2xl font-extrabold tracking-tight">
+            Compare the other packages
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {others.map((other, i) => (
+              <Reveal key={other.slug} step={i}>
+                <PackageCard pkg={other} />
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>
@@ -184,16 +253,9 @@ export default async function PackageDetailPage({ params }) {
                 Book the {pkg.name}
               </h2>
               <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">
-                Leave your number and how many are travelling. We will call you
-                back with dates, the vehicle and the final figure.
+                Leave your number and how many are travelling. We will call
+                you back with dates, the vehicle and the final figure.
               </p>
-              <Link
-                href="/packages"
-                className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold transition-colors hover:text-accent-ink"
-              >
-                Compare the other packages
-                <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
-              </Link>
             </div>
             <EnquiryForm />
           </div>
