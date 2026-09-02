@@ -1,18 +1,14 @@
-import { Bricolage_Grotesque, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import CallBar from "@/components/site/CallBar";
 import { business, addressOneLine } from "@/data/business";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
+// Single family, weight contrast carries the two-tone headings the reference
+// uses ("Popular" bold beside "destination" light).
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
@@ -82,7 +78,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en-IN"
       data-scroll-behavior="smooth"
-      className={`${bricolage.variable} ${manrope.variable} h-full antialiased`}
+      className={`${jakarta.variable} h-full antialiased`}
     >
       {/* Bottom padding on mobile clears the fixed call bar. */}
       <body className="flex min-h-full flex-col bg-surface pb-[68px] text-text sm:pb-0">
@@ -93,7 +89,7 @@ export default function RootLayout({ children }) {
         />
         <a
           href="#main"
-          className="sr-only rounded-control bg-brand px-4 py-2 text-on-brand focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
+          className="sr-only rounded-pill bg-accent px-4 py-2 text-on-accent focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
         >
           Skip to content
         </a>

@@ -1,50 +1,54 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import HeroSearchCard from "./HeroSearchCard";
 
 /*
-  Asymmetric split hero. Copy sits left on paper, the river runs full-bleed to
-  the right edge. Four text elements only: brand line, headline, one sentence,
-  two navigational CTAs. Calling lives in the header and the mobile call bar,
-  so it is deliberately not repeated here.
+  Inset photograph with rounded corners, the nav floating over it, centred copy
+  and a search card near the base, following the reference layout. A scrim sits
+  between photo and text so the headline clears AA against any part of the
+  image.
 */
 
 export default function Hero() {
   return (
-    <section className="relative border-b border-line">
-      <div className="mx-auto grid w-full max-w-[1600px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-0">
-        <div className="px-5 pb-4 pt-14 sm:px-8 lg:py-24 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-14">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent-ink">
-            Kasi, Tirupathi and Arunachalam
-          </p>
+    <section className="px-3 pt-2 sm:px-5">
+      <div className="relative isolate overflow-hidden rounded-card">
+        <Image
+          src="/images/kashi-temple.jpg"
+          alt="A carved stone temple shikhara in the Kashi Vishwanath Dham complex, Varanasi"
+          fill
+          priority
+          sizes="100vw"
+          className="-z-10 object-cover object-[50%_42%]"
+        />
+        {/*
+          Scrim: without it the white headline fails contrast against the hazy
+          sky. Weighted to the lower half so the carving up top keeps its
+          detail while the headline band stays dark enough.
+        */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(17_19_24/0.28),rgb(17_19_24/0.52)_45%,rgb(17_19_24/0.72))]"
+        />
 
-          <h1 className="mt-5 font-display text-[2.5rem] font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Stay a walk from
-            <br />
-            Kashi Vishwanath
-          </h1>
+        <div className="mx-auto flex min-h-[42rem] w-full max-w-7xl flex-col justify-end px-5 pb-6 pt-28 sm:px-8 lg:min-h-[46rem] lg:pt-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="inline-flex rounded-pill bg-white/15 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
+              Kasi, Tirupathi and Arunachalam
+            </p>
 
-          <p className="mt-6 max-w-[46ch] text-[17px] leading-relaxed text-muted sm:text-lg">
-            Air-conditioned deluxe rooms, Andhra meals cooked fresh, and yatra
-            packages across the northern circuit.
-          </p>
+            <h1 className="hero-copy mt-6 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Stay a Walk from Kashi Vishwanath
+            </h1>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button href="/rooms">See rooms</Button>
-            <Button href="/packages" variant="secondary">
-              Yatra packages
-            </Button>
+            <p className="hero-copy mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-white/90">
+              Air-conditioned rooms, Andhra meals cooked fresh, and yatra
+              packages across the northern circuit.
+            </p>
           </div>
-        </div>
 
-        <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:h-[min(78vh,720px)]">
-          <Image
-            src="/images/kashi-temple.jpg"
-            alt="A carved stone temple shikhara in the Kashi Vishwanath Dham complex, Varanasi"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 55vw"
-            className="object-cover object-center lg:rounded-l-surface"
-          />
+          <div className="mx-auto mt-10 w-full max-w-5xl">
+            <HeroSearchCard />
+          </div>
         </div>
       </div>
     </section>

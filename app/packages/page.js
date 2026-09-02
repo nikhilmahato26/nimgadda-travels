@@ -43,7 +43,7 @@ export default async function PackagesPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                 Not sure which one suits your group?
               </h2>
               <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">

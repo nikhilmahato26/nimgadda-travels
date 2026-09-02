@@ -30,7 +30,7 @@ export default function FleetSection({ vehicles }) {
         </div>
 
         <div className="mt-10">
-          <Button href="/travels" variant="secondary">
+          <Button href="/travels" variant="outline">
             All {vehicles.length} vehicles
           </Button>
         </div>

@@ -15,7 +15,7 @@ export default function VehicleCard({ vehicle }) {
   );
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-surface border border-line bg-surface-3">
+    <article className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface-3">
       <div className="relative aspect-[4/3] w-full bg-surface-2">
         {vehicle.image ? (
           <Image
@@ -33,7 +33,7 @@ export default function VehicleCard({ vehicle }) {
               className="text-accent-ink"
               aria-hidden="true"
             />
-            <span className="font-display text-lg font-bold tracking-tight text-accent-ink">
+            <span className="font-display text-lg font-extrabold tracking-tight text-accent-ink">
               {vehicle.name}
             </span>
             <span className="text-[13px] text-muted">
@@ -44,7 +44,7 @@ export default function VehicleCard({ vehicle }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl font-bold tracking-tight">
+        <h3 className="font-display text-xl font-extrabold tracking-tight">
           {vehicle.name}
         </h3>
         <p className="mt-1 text-[13px] font-medium uppercase tracking-[0.1em] text-accent-ink">
@@ -58,7 +58,7 @@ export default function VehicleCard({ vehicle }) {
           href={enquire}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-control border border-line bg-surface px-4 py-2.5 text-[15px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-2"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-pill border border-line bg-surface px-4 py-2.5 text-[15px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-2"
         >
           Ask about this vehicle
         </a>

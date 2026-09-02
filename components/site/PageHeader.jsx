@@ -4,7 +4,7 @@ export default function PageHeader({ title, intro, children }) {
   return (
     <header className="border-b border-line bg-surface-2 py-14 lg:py-20">
       <Container>
-        <h1 className="max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
+        <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
           {title}
         </h1>
         {intro ? (

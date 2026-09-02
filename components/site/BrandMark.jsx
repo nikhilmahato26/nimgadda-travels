@@ -6,30 +6,25 @@ import { cn } from "@/lib/utils";
   a next/image; the sizing and the wordmark beside it stay as they are.
 */
 
-export function BrandMark({ className, tone = "brand" }) {
-  const ring = tone === "panel" ? "var(--accent)" : "var(--brand)";
-  const fill = tone === "panel" ? "var(--panel)" : "var(--surface-3)";
-  const text = tone === "panel" ? "var(--accent)" : "var(--brand)";
-
+export function BrandMark({ className }) {
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox="0 0 40 40"
       role="img"
       aria-label="Nimmagadda Vari Charitable Trust"
-      className={cn("h-10 w-10 shrink-0", className)}
+      className={cn("h-9 w-9 shrink-0", className)}
     >
-      <circle cx="24" cy="24" r="23" fill={fill} stroke={ring} strokeWidth="1" />
-      <circle cx="24" cy="24" r="20" fill="none" stroke={ring} strokeWidth="2" />
+      <circle cx="20" cy="20" r="20" fill="var(--accent)" />
       <text
-        x="24"
-        y="24"
+        x="20"
+        y="20.5"
         textAnchor="middle"
         dominantBaseline="central"
-        fill={text}
-        fontSize="16"
-        fontWeight="700"
-        fontFamily="var(--font-bricolage), sans-serif"
-        letterSpacing="0.5"
+        fill="var(--on-accent)"
+        fontSize="15"
+        fontWeight="800"
+        fontFamily="var(--font-jakarta), sans-serif"
+        letterSpacing="-0.3"
       >
         NV
       </text>
@@ -37,26 +32,15 @@ export function BrandMark({ className, tone = "brand" }) {
   );
 }
 
-export function BrandLockup({ tone = "brand", className }) {
-  const onPanel = tone === "panel";
+export function BrandLockup({ className }) {
   return (
-    <span className={cn("flex items-center gap-3", className)}>
-      <BrandMark tone={tone} />
+    <span className={cn("flex items-center gap-2.5", className)}>
+      <BrandMark />
       <span className="leading-tight">
-        <span
-          className={cn(
-            "block font-display text-[15px] font-bold tracking-tight",
-            onPanel ? "text-on-panel" : "text-text"
-          )}
-        >
+        <span className="block font-display text-[15px] font-extrabold tracking-tight text-text">
           Nimmagadda Vari
         </span>
-        <span
-          className={cn(
-            "block text-[11px] font-medium uppercase tracking-[0.14em]",
-            onPanel ? "text-on-panel-muted" : "text-muted"
-          )}
-        >
+        <span className="block text-[11px] font-medium text-muted">
           Charitable Trust
         </span>
       </span>

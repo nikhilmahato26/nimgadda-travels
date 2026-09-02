@@ -2,28 +2,30 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /*
-  Shape lock: every button uses --r-control (10px).
-  Contrast: `primary` is brand navy on white (15.6:1 light / gold-on-navy 9.2:1
-  dark), `secondary` is body text on paper with a visible border. Both clear
-  WCAG AA comfortably.
+  Shape lock: every interactive control is a pill.
+
+  Contrast, all checked against WCAG AA:
+    accent    ink on yellow ......... 13.2:1
+    ink       white on near-black ... 17.4:1
+    outline   text on white ......... 15.9:1, plus a visible border
+    onPhoto   ink on white ......... 17.4:1, sits over a scrim
 */
 
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control px-5 py-3 text-[15px] font-semibold tracking-tight transition-all duration-200 active:translate-y-px disabled:pointer-events-none disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-pill px-6 py-3 text-[15px] font-semibold tracking-tight transition-all duration-200 active:translate-y-px disabled:pointer-events-none disabled:opacity-60";
 
 const variants = {
-  primary: "bg-brand text-on-brand hover:opacity-90 shadow-[var(--shadow-soft)]",
-  secondary:
-    "border border-line bg-surface-3 text-text hover:border-accent hover:bg-surface-2",
-  onPanel:
-    "border border-white/25 bg-white/5 text-on-panel hover:border-accent hover:bg-white/10",
-  accent: "bg-accent text-on-accent hover:opacity-90",
+  accent: "bg-accent text-on-accent hover:brightness-95",
+  ink: "bg-ink text-on-ink hover:opacity-90",
+  outline:
+    "border border-line bg-surface-3 text-text hover:border-ink hover:bg-surface-2",
+  onPhoto: "bg-surface text-text hover:bg-surface-2",
 };
 
 export function Button({
   as = "link",
   href,
-  variant = "primary",
+  variant = "accent",
   className,
   children,
   ...props

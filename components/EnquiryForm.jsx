@@ -20,7 +20,7 @@ export default function EnquiryForm() {
     return (
       <div
         role="status"
-        className="rounded-surface border border-accent bg-surface-3 p-8"
+        className="rounded-card border border-accent bg-surface-3 p-8"
       >
         <Check
           size={26}
@@ -28,7 +28,7 @@ export default function EnquiryForm() {
           className="text-accent-ink"
           aria-hidden="true"
         />
-        <h3 className="mt-4 font-display text-xl font-bold tracking-tight">
+        <h3 className="mt-4 font-display text-xl font-extrabold tracking-tight">
           Your enquiry is with us
         </h3>
         <p className="mt-2 text-[15px] leading-relaxed text-muted">
@@ -45,7 +45,7 @@ export default function EnquiryForm() {
     <form
       action={formAction}
       noValidate
-      className="rounded-surface border border-line bg-surface-3 p-6 sm:p-8"
+      className="rounded-card border border-line bg-surface-3 p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
@@ -81,7 +81,7 @@ export default function EnquiryForm() {
             defaultValue={values.need ?? "rooms"}
             aria-invalid={Boolean(errors.need)}
             aria-describedby={errors.need ? "need-error" : undefined}
-            className="h-[46px] rounded-control border border-line bg-surface px-3.5 text-[15px] text-text"
+            className="h-[46px] rounded-pill border border-line bg-surface px-3.5 text-[15px] text-text"
           >
             {needOptions.map((o) => (
               <option key={o.value} value={o.value}>
@@ -132,7 +132,7 @@ export default function EnquiryForm() {
             placeholder="Travelling with elders, need ground floor, arriving by train at night, and so on"
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? "message-error" : undefined}
-            className="rounded-control border border-line bg-surface px-3.5 py-3 text-[15px] text-text placeholder:text-muted"
+            className="rounded-pill border border-line bg-surface px-3.5 py-3 text-[15px] text-text placeholder:text-muted"
           />
           {errors.message ? (
             <p
@@ -166,7 +166,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="mt-7 w-full rounded-control bg-brand px-5 py-3.5 text-[15px] font-semibold text-on-brand transition-opacity hover:opacity-90 active:translate-y-px disabled:opacity-60 sm:w-auto sm:px-8"
+      className="mt-7 w-full rounded-pill bg-accent px-5 py-3.5 text-[15px] font-semibold text-on-accent transition-opacity hover:opacity-90 active:translate-y-px disabled:opacity-60 sm:w-auto sm:px-8"
     >
       {pending ? "Sending" : "Send enquiry"}
     </button>
@@ -187,7 +187,7 @@ function Field({ label, name, error, hint, ...props }) {
         name={name}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : hint ? hintId : undefined}
-        className="h-[46px] rounded-control border border-line bg-surface px-3.5 text-[15px] text-text placeholder:text-muted"
+        className="h-[46px] rounded-pill border border-line bg-surface px-3.5 text-[15px] text-text placeholder:text-muted"
         {...props}
       />
       {error ? (

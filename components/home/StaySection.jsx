@@ -37,7 +37,7 @@ export default function StaySection({ rooms, amenities }) {
 
         <div className="mt-12 grid gap-4 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
           <Reveal>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-surface lg:h-full">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card lg:h-full">
               <Image
                 src="/images/ganga-sunrise.jpg"
                 alt="Boats on the Ganges at sunrise below the ghats of Varanasi"
@@ -57,7 +57,7 @@ export default function StaySection({ rooms, amenities }) {
                     className="group flex items-start justify-between gap-6 py-6"
                   >
                     <span>
-                      <span className="block font-display text-xl font-bold tracking-tight transition-colors group-hover:text-accent-ink">
+                      <span className="block font-display text-xl font-extrabold tracking-tight transition-colors group-hover:text-accent-ink">
                         {room.name}
                       </span>
                       <span className="mt-1 block text-[13px] font-medium uppercase tracking-[0.1em] text-accent-ink">

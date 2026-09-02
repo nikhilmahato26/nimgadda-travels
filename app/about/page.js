@@ -23,7 +23,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-20">
             <Reveal>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-surface">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
                 <Image
                   src="/images/ghats-pilgrims.jpg"
                   alt="Pilgrims on the ghats at Varanasi"
@@ -35,7 +35,7 @@ export default function AboutPage() {
             </Reveal>
 
             <div>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                 Everything under one roof, on purpose
               </h2>
               <div className="mt-6 space-y-5 text-[17px] leading-relaxed text-muted">
@@ -58,11 +58,11 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="mt-9 rounded-surface border border-line bg-surface-3 p-6">
+              <div className="mt-9 rounded-card border border-line bg-surface-3 p-6">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-accent-ink">
                   {business.trustee.role}
                 </p>
-                <p className="mt-2 font-display text-xl font-bold tracking-tight">
+                <p className="mt-2 font-display text-xl font-extrabold tracking-tight">
                   {business.trustee.name}
                 </p>
                 <address className="mt-3 not-italic text-[15px] leading-relaxed text-muted">
@@ -76,7 +76,7 @@ export default function AboutPage() {
                   <Button href={business.phoneTel}>
                     {business.phoneDisplay}
                   </Button>
-                  <Button href="/contact" variant="secondary">
+                  <Button href="/contact" variant="outline">
                     Contact page
                   </Button>
                 </div>

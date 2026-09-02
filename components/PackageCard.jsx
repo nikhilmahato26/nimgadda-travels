@@ -10,7 +10,7 @@ const UNCONFIRMED = "Duration confirmed when you book";
 export function PackagePrice({ amount, className = "" }) {
   return (
     <p className={className}>
-      <span className="font-display text-3xl font-bold tracking-tight">
+      <span className="font-display text-3xl font-extrabold tracking-tight">
         {rupees(amount)}
       </span>{" "}
       <span className="text-[14px] font-medium text-muted">per person</span>
@@ -21,7 +21,7 @@ export function PackagePrice({ amount, className = "" }) {
 // The featured, image-led treatment. One per page.
 export function FeaturedPackageCard({ pkg }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-surface border border-line bg-surface-3">
+    <article className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface-3">
       <div className="relative aspect-[16/9] w-full">
         <Image
           src={pkg.image}
@@ -33,7 +33,7 @@ export function FeaturedPackageCard({ pkg }) {
       </div>
 
       <div className="flex flex-1 flex-col p-7 lg:p-8">
-        <h3 className="font-display text-2xl font-bold tracking-tight lg:text-3xl">
+        <h3 className="font-display text-2xl font-extrabold tracking-tight lg:text-3xl">
           {pkg.name}
         </h3>
         <p className="mt-1 text-[14px] font-medium text-muted">
@@ -61,7 +61,7 @@ export function FeaturedPackageCard({ pkg }) {
           <PackagePrice amount={pkg.pricePerPerson} />
           <Link
             href={`/packages/${pkg.slug}`}
-            className="inline-flex items-center gap-2 rounded-control bg-brand px-5 py-3 text-[15px] font-semibold text-on-brand transition-opacity hover:opacity-90 active:translate-y-px"
+            className="inline-flex items-center gap-2 rounded-pill bg-accent px-5 py-3 text-[15px] font-semibold text-on-accent transition-opacity hover:opacity-90 active:translate-y-px"
           >
             What is included
             <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
@@ -75,8 +75,8 @@ export function FeaturedPackageCard({ pkg }) {
 // The compact treatment used alongside the featured card and on /packages.
 export function PackageCard({ pkg }) {
   return (
-    <article className="flex h-full flex-col rounded-surface border border-line bg-surface-3 p-6 transition-colors hover:border-accent">
-      <h3 className="font-display text-xl font-bold tracking-tight">
+    <article className="flex h-full flex-col rounded-card border border-line bg-surface-3 p-6 transition-colors hover:border-accent">
+      <h3 className="font-display text-xl font-extrabold tracking-tight">
         {pkg.name}
       </h3>
       <p className="mt-1 text-[14px] font-medium text-muted">

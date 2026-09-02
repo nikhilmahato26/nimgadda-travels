@@ -52,7 +52,7 @@ export default async function RoomDetailPage({ params }) {
               <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-accent-ink">
                 {room.tagline}
               </p>
-              <h1 className="mt-3 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
+              <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
                 {room.name}
               </h1>
               <p className="mt-3 text-[15px] font-medium text-muted">
@@ -66,14 +66,14 @@ export default async function RoomDetailPage({ params }) {
                 <Button href={whatsappLink(whatsappMessages.rooms(room.name))}>
                   Ask about this room
                 </Button>
-                <Button href={business.phoneTel} variant="secondary">
+                <Button href={business.phoneTel} variant="outline">
                   <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
                   {business.phoneDisplay}
                 </Button>
               </div>
             </div>
 
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-surface border border-line bg-surface-3">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line bg-surface-3">
               {room.image ? (
                 <Image
                   src={room.image}
@@ -85,7 +85,7 @@ export default async function RoomDetailPage({ params }) {
                 />
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-2 p-8 text-center">
-                  <span className="font-display text-2xl font-bold tracking-tight text-accent-ink">
+                  <span className="font-display text-2xl font-extrabold tracking-tight text-accent-ink">
                     {room.name}
                   </span>
                   <span className="text-[14px] text-muted">
@@ -102,7 +102,7 @@ export default async function RoomDetailPage({ params }) {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-2xl font-bold tracking-tight">
+              <h2 className="font-display text-2xl font-extrabold tracking-tight">
                 About this room
               </h2>
               <div className="mt-5 space-y-4 text-[16px] leading-relaxed text-muted">
@@ -111,7 +111,7 @@ export default async function RoomDetailPage({ params }) {
                 ))}
               </div>
 
-              <h2 className="mt-12 font-display text-2xl font-bold tracking-tight">
+              <h2 className="mt-12 font-display text-2xl font-extrabold tracking-tight">
                 Rates
               </h2>
               <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-muted">
@@ -129,8 +129,8 @@ export default async function RoomDetailPage({ params }) {
               </Link>
             </div>
 
-            <div className="rounded-surface border border-line bg-surface-3 p-7 lg:p-8">
-              <h2 className="font-display text-xl font-bold tracking-tight">
+            <div className="rounded-card border border-line bg-surface-3 p-7 lg:p-8">
+              <h2 className="font-display text-xl font-extrabold tracking-tight">
                 What is in the room
               </h2>
               <ul className="mt-5 space-y-3">
@@ -158,7 +158,7 @@ export default async function RoomDetailPage({ params }) {
           the building instead. Captioned so it is never mistaken for the room. */}
       <Section className="border-y border-line bg-surface-2">
         <Container>
-          <h2 className="font-display text-2xl font-bold tracking-tight">
+          <h2 className="font-display text-2xl font-extrabold tracking-tight">
             What is around you
           </h2>
           <p className="mt-3 max-w-[56ch] text-[16px] leading-relaxed text-muted">
@@ -170,7 +170,7 @@ export default async function RoomDetailPage({ params }) {
             {neighbourhood.map((item, i) => (
               <Reveal key={item.image} step={i}>
                 <figure>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-surface">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
                     <Image
                       src={item.image}
                       alt={item.alt}
@@ -191,7 +191,7 @@ export default async function RoomDetailPage({ params }) {
 
       <Section>
         <Container>
-          <h2 className="font-display text-2xl font-bold tracking-tight">
+          <h2 className="font-display text-2xl font-extrabold tracking-tight">
             The other categories
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -199,9 +199,9 @@ export default async function RoomDetailPage({ params }) {
               <Link
                 key={other.slug}
                 href={`/rooms/${other.slug}`}
-                className="group flex flex-col rounded-surface border border-line bg-surface-3 p-6 transition-colors hover:border-accent"
+                className="group flex flex-col rounded-card border border-line bg-surface-3 p-6 transition-colors hover:border-accent"
               >
-                <h3 className="font-display text-xl font-bold tracking-tight transition-colors group-hover:text-accent-ink">
+                <h3 className="font-display text-xl font-extrabold tracking-tight transition-colors group-hover:text-accent-ink">
                   {other.name}
                 </h3>
                 <p className="mt-1 text-[13px] font-medium uppercase tracking-[0.1em] text-accent-ink">
@@ -220,7 +220,7 @@ export default async function RoomDetailPage({ params }) {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                 Hold a {room.name} for your dates
               </h2>
               <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">

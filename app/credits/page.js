@@ -22,7 +22,7 @@ export default function CreditsPage() {
           <ul className="divide-y divide-line border-y border-line">
             {imageCredits.map((c) => (
               <li key={c.slug} className="py-5">
-                <p className="font-display text-[17px] font-bold tracking-tight">
+                <p className="font-display text-[17px] font-extrabold tracking-tight">
                   {c.title}
                 </p>
                 <p className="mt-1 text-[15px] text-muted">

@@ -68,7 +68,7 @@ export default function ContactPage() {
                         aria-hidden="true"
                       />
                       <span>
-                        <span className="block font-display text-lg font-bold tracking-tight transition-colors group-hover:text-accent-ink">
+                        <span className="block font-display text-lg font-extrabold tracking-tight transition-colors group-hover:text-accent-ink">
                           {title}
                         </span>
                         <span className="text-[14px] leading-relaxed text-muted">
@@ -80,8 +80,8 @@ export default function ContactPage() {
                 ))}
               </ul>
 
-              <div className="mt-8 rounded-surface border border-line bg-surface-3 p-6">
-                <h2 className="font-display text-lg font-bold tracking-tight">
+              <div className="mt-8 rounded-card border border-line bg-surface-3 p-6">
+                <h2 className="font-display text-lg font-extrabold tracking-tight">
                   Coming by train
                 </h2>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted">

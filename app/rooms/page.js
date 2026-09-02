@@ -71,7 +71,7 @@ export default async function RoomsPage() {
           <div className="mt-12 space-y-4">
             {rooms.map((room, i) => (
               <Reveal key={room.slug} step={i}>
-                <article className="grid overflow-hidden rounded-surface border border-line bg-surface-3 lg:grid-cols-[1fr_1.15fr]">
+                <article className="grid overflow-hidden rounded-card border border-line bg-surface-3 lg:grid-cols-[1fr_1.15fr]">
                   <div className="relative aspect-[16/10] w-full bg-surface-2 lg:aspect-auto lg:min-h-[320px]">
                     {room.image ? (
                       <Image
@@ -86,7 +86,7 @@ export default async function RoomsPage() {
                       // a grey box, the tile carries the room name until the
                       // real picture lands in /public/images/rooms/.
                       <div className="flex h-full flex-col items-center justify-center gap-2 p-8 text-center">
-                        <span className="font-display text-2xl font-bold tracking-tight text-accent-ink">
+                        <span className="font-display text-2xl font-extrabold tracking-tight text-accent-ink">
                           {room.name}
                         </span>
                         <span className="text-[14px] text-muted">
@@ -100,7 +100,7 @@ export default async function RoomsPage() {
                     <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-accent-ink">
                       {room.tagline}
                     </p>
-                    <h2 className="mt-2 font-display text-2xl font-bold tracking-tight lg:text-3xl">
+                    <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight lg:text-3xl">
                       {room.name}
                     </h2>
                     <p className="mt-1 text-[14px] font-medium text-muted">
@@ -158,7 +158,7 @@ export default async function RoomsPage() {
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {stayHighlights.map((h) => (
               <div key={h.title}>
-                <h2 className="font-display text-lg font-bold tracking-tight">
+                <h2 className="font-display text-lg font-extrabold tracking-tight">
                   {h.title}
                 </h2>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted">
@@ -174,7 +174,7 @@ export default async function RoomsPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                 Check availability for your dates
               </h2>
               <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">

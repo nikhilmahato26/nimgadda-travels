@@ -46,7 +46,7 @@ export default async function PackageDetailPage({ params }) {
 
           <div className="mt-6 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
             <div>
-              <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
+              <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
                 {pkg.name}
               </h1>
               <p className="mt-3 text-[15px] font-medium text-muted">
@@ -58,7 +58,7 @@ export default async function PackageDetailPage({ params }) {
 
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <p>
-                  <span className="font-display text-4xl font-bold tracking-tight">
+                  <span className="font-display text-4xl font-extrabold tracking-tight">
                     {rupees(pkg.pricePerPerson)}
                   </span>{" "}
                   <span className="text-[15px] font-medium text-muted">
@@ -71,7 +71,7 @@ export default async function PackageDetailPage({ params }) {
               </div>
             </div>
 
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-surface">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
               <Image
                 src={pkg.image}
                 alt={pkg.imageAlt}
@@ -89,7 +89,7 @@ export default async function PackageDetailPage({ params }) {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-2xl font-bold tracking-tight">
+              <h2 className="font-display text-2xl font-extrabold tracking-tight">
                 Where you go
               </h2>
               {pkg.places ? (
@@ -111,7 +111,7 @@ export default async function PackageDetailPage({ params }) {
                 </p>
               )}
 
-              <h2 className="mt-12 font-display text-2xl font-bold tracking-tight">
+              <h2 className="mt-12 font-display text-2xl font-extrabold tracking-tight">
                 Rooms and meals
               </h2>
               <dl className="mt-5 space-y-5">
@@ -134,8 +134,8 @@ export default async function PackageDetailPage({ params }) {
               </dl>
             </div>
 
-            <div className="rounded-surface border border-line bg-surface-3 p-7 lg:p-8">
-              <h2 className="font-display text-xl font-bold tracking-tight">
+            <div className="rounded-card border border-line bg-surface-3 p-7 lg:p-8">
+              <h2 className="font-display text-xl font-extrabold tracking-tight">
                 What the price covers
               </h2>
               <ul className="mt-5 space-y-3">
@@ -152,7 +152,7 @@ export default async function PackageDetailPage({ params }) {
                 ))}
               </ul>
 
-              <h3 className="mt-8 border-t border-line pt-7 font-display text-xl font-bold tracking-tight">
+              <h3 className="mt-8 border-t border-line pt-7 font-display text-xl font-extrabold tracking-tight">
                 What it does not cover
               </h3>
               <ul className="mt-5 space-y-3">
@@ -180,7 +180,7 @@ export default async function PackageDetailPage({ params }) {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                 Book the {pkg.name}
               </h2>
               <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">

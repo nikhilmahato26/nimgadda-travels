@@ -82,18 +82,36 @@ the borrowed images have been replaced with the trust's own.
 
 ## Design notes
 
-- Palette comes from the trust's seal: deep navy carries the page, temple gold
-  is the single accent. Tokens are in `app/globals.css`; components never
-  hardcode a hex.
-- `--accent` (gold) is a fill colour and only clears contrast on navy.
-  Accent **text** on light surfaces uses `--accent-ink`, a darker gold, which
-  passes WCAG AA at 5.1:1.
-- Shape lock: buttons and inputs 10px, cards and media 18px, chips fully
-  rounded.
+The layout and geometry follow a reference design supplied by the client, with
+its lime accent replaced by yellow.
+
+- Type is Plus Jakarta Sans throughout. Section headings use the reference's
+  two-tone treatment, extrabold beside light, via `TwoTone` in
+  `components/ui/Section.jsx`.
+- `--accent` (yellow) is a **fill only**. At ~0.69 luminance it cannot carry
+  text on a light ground, so accent **text** uses `--accent-ink`, a dark amber
+  at 5.3:1. Tokens live in `app/globals.css`; components never hardcode a hex.
+- Shape lock: every interactive control is a pill, every card and image is
+  20px. Nothing uses another radius.
+- The hero search card is a real control: it composes a WhatsApp message from
+  what you pick and opens a chat. It does not pretend to search a database.
 - Scroll reveals are CSS scroll-driven animations, not JavaScript. Content is
   visible in the server HTML and the animation is pure enhancement, so nothing
   is hidden on a slow connection or with JS disabled.
 - Light and dark are both defined; the page follows `prefers-color-scheme`.
+
+## Sections that are off until you send content
+
+`data/testimonials.js` is deliberately empty. The reference design has a client
+review section, but no real guest quotes were supplied and writing fictional
+ones for a real business is not something to ship. `Testimonials.jsx` returns
+null while the array is empty, so the page has no hole in it. Add two or three
+real quotes in the documented shape and the section appears.
+
+The stat row on the home page shows counts that are true and checkable against
+the rest of the site (room categories, vehicles, packages, places). The
+reference fills that row with growth metrics; a charitable trust has none, and
+inventing them was not an option.
 
 ## Not built yet
 

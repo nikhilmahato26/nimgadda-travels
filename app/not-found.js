@@ -10,7 +10,7 @@ export default function NotFound() {
       <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent-ink">
         Page not found
       </p>
-      <h1 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
+      <h1 className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
         This page is not here
       </h1>
       <p className="mt-5 max-w-[52ch] text-[17px] leading-relaxed text-muted">
@@ -19,7 +19,7 @@ export default function NotFound() {
       </p>
       <div className="mt-9 flex flex-wrap gap-3">
         <Button href="/">Back to the start</Button>
-        <Button href={business.phoneTel} variant="secondary">
+        <Button href={business.phoneTel} variant="outline">
           {business.phoneDisplay}
         </Button>
       </div>
