@@ -1,17 +1,18 @@
 // The three room categories the trust offers, in ascending order.
 //
-// `gallery` is an array of photo paths, most recent last-added at the end.
-// Photography is still coming in room by room, so most rooms have an empty
-// array and their tiles fall back to a typographic panel. To add photos for
-// a room:
+// `gallery` is an array of photo paths. Photography is coming in room by
+// room (AC Room and Deluxe are done; Super Deluxe is still an empty array
+// and falls back to a typographic panel). To add photos for a room:
 //
 //   1. Drop the files straight into /public/images/ (flat, same folder as
 //      every other photo on the site, e.g. kashi-temple.jpg, fleet-dzire.jpg
 //      - there is no /rooms subfolder).
 //   2. Name them room-<slug>-<n>.jpg, matching the room's `slug` below and
-//      counting from 1: room-deluxe-1.jpg, room-deluxe-2.jpg, and so on.
-//      Any orientation works; RoomGallery crops to fit. At least 1200px on
-//      the long edge.
+//      counting from 1: room-super-deluxe-1.jpg, room-super-deluxe-2.jpg,
+//      and so on. Any orientation works, but check it renders upright first
+//      - a couple of the AC Room and Deluxe photos came in sideways from
+//      WhatsApp and needed rotating before use. At least 1200px on the long
+//      edge.
 //   3. Add each path to that room's `gallery` array below, in the order they
 //      should appear. One photo renders as a single image; two or more
 //      automatically become a slider, on the home page card and on the
@@ -67,7 +68,12 @@ export const rooms = [
     name: "Deluxe Room",
     tagline: "More room to spread out",
     occupancy: "2 to 3 guests",
-    gallery: [], // -> ["/images/room-deluxe-1.jpg", ...]
+    gallery: [
+      "/images/room-deluxe-1.jpg",
+      "/images/room-deluxe-2.jpg",
+      "/images/room-deluxe-3.jpg",
+      "/images/room-deluxe-4.jpg",
+    ],
     summary:
       "The same location and the same comforts, in a larger room for families who want more space than the base category.",
     description: [

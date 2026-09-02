@@ -38,7 +38,7 @@ export default function StaySection({ rooms }) {
         <Reveal>
           <SectionHeading
             title="Three room categories, one short walk from the temple"
-            body="Every category is air-conditioned, with lift access and parking at the building. Photographs of the rooms are being taken now and will be added here."
+            body="Every category is air-conditioned, with lift access and parking at the building. Photographs are landing category by category, and Super Deluxe is the one still to come."
           />
         </Reveal>
 
