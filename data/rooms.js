@@ -1,17 +1,20 @@
-// The three room categories the trust offers, in ascending order.
+// The three room categories the trust offers, in ascending order. All three
+// now have real photos.
 //
-// `gallery` is an array of photo paths. Photography is coming in room by
-// room (AC Room and Deluxe are done; Super Deluxe is still an empty array
-// and falls back to a typographic panel). To add photos for a room:
+// `gallery` is an array of photo paths. If a room's array is ever emptied out
+// (a new category added, a room dropped for renovation), its tiles fall back
+// to a typographic panel rather than a broken image. To add or replace
+// photos for a room:
 //
 //   1. Drop the files straight into /public/images/ (flat, same folder as
 //      every other photo on the site, e.g. kashi-temple.jpg, fleet-dzire.jpg
 //      - there is no /rooms subfolder).
 //   2. Name them room-<slug>-<n>.jpg, matching the room's `slug` below and
-//      counting from 1: room-super-deluxe-1.jpg, room-super-deluxe-2.jpg,
-//      and so on. Any orientation works, but check it renders upright first
-//      - a couple of the AC Room and Deluxe photos came in sideways from
-//      WhatsApp and needed rotating before use. At least 1200px on the long
+//      counting from 1: room-ac-room-1.jpg, room-ac-room-2.jpg, and so on.
+//      Any orientation works, but check it renders upright first - several
+//      of the photos already on the site came in sideways from WhatsApp and
+//      needed rotating before use, and one had a bystander caught in the
+//      frame and was cropped before it went up. At least 1200px on the long
 //      edge.
 //   3. Add each path to that room's `gallery` array below, in the order they
 //      should appear. One photo renders as a single image; two or more
@@ -95,7 +98,15 @@ export const rooms = [
     name: "Super Deluxe Room",
     tagline: "Best for elders and longer stays",
     occupancy: "2 to 4 guests",
-    gallery: [], // -> ["/images/room-super-deluxe-1.jpg", ...]
+    gallery: [
+      "/images/room-super-deluxe-1.jpg",
+      "/images/room-super-deluxe-2.jpg",
+      "/images/room-super-deluxe-3.jpg",
+      "/images/room-super-deluxe-4.jpg",
+      "/images/room-super-deluxe-5.jpg",
+      "/images/room-super-deluxe-6.jpg",
+      "/images/room-super-deluxe-7.jpg",
+    ],
     summary:
       "Our largest category, with a bigger bathroom, suited to families travelling with elders who need room to move.",
     description: [

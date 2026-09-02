@@ -53,21 +53,27 @@ of printing a made-up value. Fill them in and the pages update themselves.
 | `data/packages.js` -> `grand-yatra` | Duration. Every other package is 5 days / 6 nights; this one was quoted without a length. |
 | `data/packages.js` -> `kasi-yatra` | The route. It was quoted as "same as above", which is ambiguous about whether the places match the Grand Yatra. |
 
-Room photography is also outstanding for two of the three categories. Each
-room's `gallery` array in `data/rooms.js` holds its photo paths; an empty
-array falls back to a typographic panel. To add photos for a room: drop the
-files straight into `public/images/` (flat, same folder as everything else -
-there is no `/rooms` subfolder), name them `room-<slug>-<n>.jpg`
+Room photography is complete: all three categories have real photos from the
+client (AC Room 3, Deluxe 4, Super Deluxe 7). Each room's `gallery` array in
+`data/rooms.js` holds its photo paths; an empty array falls back to a
+typographic panel, which only matters now if a category is added or a room's
+photos are pulled for renovation. To add or replace photos for a room: drop
+the files straight into `public/images/` (flat, same folder as everything
+else - there is no `/rooms` subfolder), name them `room-<slug>-<n>.jpg`
 (`room-deluxe-1.jpg`, `room-deluxe-2.jpg`, ...), then list those paths in that
 room's `gallery` array. One photo renders as a single image; two or more
 become a slider automatically, on the home page card, the `/rooms` list, and
 the room's own page, with no other code to touch. Full detail is in that
-file's header comment. Until photos land, each room page shows the streets
-around the building instead, clearly captioned so it is never mistaken for
-the room itself.
+file's header comment.
 
-AC Room already has three real photos the client sent, so it can serve as the
-reference for what "done" looks like for the other two.
+A few of the client's photos needed cleanup before they went up: some came in
+sideways from WhatsApp and were rotated, one Super Deluxe living-area shot had
+a bystander caught in the corner of frame and was cropped to remove them, and
+one exact duplicate file (same photo submitted twice for Deluxe) was dropped.
+Three Super Deluxe photos - a wall art close-up, the building's lift, and a
+corridor - were left out of the room gallery as generic property shots rather
+than photos of the room itself; they're still in Cloudinary if there's a
+better home for them (a building or amenities section, say).
 
 The same `gallery` field is what seeds into the database once one is connected
 (`prisma/seed.js` copies every field on these objects as-is), so this is the
