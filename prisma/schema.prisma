@@ -19,16 +19,18 @@ model SiteSetting {
 }
 
 model Room {
-  id        String   @id @default(uuid())
-  slug      String   @unique
-  name      String
-  summary   String
-  occupancy String
-  image     String?
-  amenities Json
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  tagline     String
+  summary     String
+  description Json // array of paragraphs
+  occupancy   String
+  image       String?
+  amenities   Json
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Package {
@@ -56,6 +58,8 @@ model FleetGroup {
   slug      String   @unique
   label     String
   range     String
+  image     String
+  imageAlt  String
   vehicles  Json
   order     Int      @default(0)
   createdAt DateTime @default(now())

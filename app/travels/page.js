@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PageHeader from "@/components/site/PageHeader";
 import { Container, Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +19,7 @@ export default async function TravelsPage() {
   return (
     <>
       <PageHeader
-        title="Vehicles for four people or forty nine"
+        title={"Vehicles for four people or forty\u00A0nine"}
         intro="Our own fleet, driven by people who know the roads between Kasi, Prayagraj, Ayodhya and Gaya. Pick by how many are travelling."
       >
         <Button href={whatsappLink(whatsappMessages.travels)}>
@@ -31,9 +32,18 @@ export default async function TravelsPage() {
           <div className="divide-y divide-line border-y border-line">
             {groups.map((group, i) => (
               <Reveal key={group.slug} step={i}>
-                <div className="grid gap-5 py-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-12">
+                <div className="grid gap-6 py-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-12">
                   <div>
-                    <h2 className="font-display text-2xl font-bold tracking-tight">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-surface">
+                      <Image
+                        src={group.image}
+                        alt={group.imageAlt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 20rem"
+                        className="object-cover"
+                      />
+                    </div>
+                    <h2 className="mt-5 font-display text-2xl font-bold tracking-tight">
                       {group.label}
                     </h2>
                     <p className="mt-1 text-[15px] font-medium text-accent-ink">
@@ -41,7 +51,7 @@ export default async function TravelsPage() {
                     </p>
                   </div>
 
-                  <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {group.vehicles.map((v) => (
                       <li
                         key={v.name}

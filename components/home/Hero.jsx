@@ -38,12 +38,12 @@ export default function Hero() {
 
         <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:h-[min(78vh,720px)]">
           <Image
-            src="/images/ganga-sunrise.jpg"
-            alt="Boats on the Ganges at sunrise below the ghats of Varanasi"
+            src="/images/kashi-temple.jpg"
+            alt="A carved stone temple shikhara in the Kashi Vishwanath Dham complex, Varanasi"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 55vw"
-            className="object-cover lg:rounded-l-surface"
+            className="object-cover object-center lg:rounded-l-surface"
           />
         </div>
       </div>

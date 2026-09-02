@@ -2,6 +2,15 @@
 // CC BY / CC BY-SA / GODL-India all require visible attribution, which is what /credits provides.
 export const imageCredits = [
   {
+    "slug": "kashi-temple",
+    "file": "/images/kashi-temple.jpg",
+    "title": "Shri Kashi Vishwanath Temple 2",
+    "author": "Gannu03",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shri_Kashi_Vishwanath_Temple_2.jpg"
+  },
+  {
     "slug": "ganga-sunrise",
     "file": "/images/ganga-sunrise.jpg",
     "title": "Boats at sunrise Ganges River Varanasi Uttar Pradesh Schwiki",
@@ -117,5 +126,32 @@ export const imageCredits = [
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:South_Indian_thali-Saravana_bhawan-New_Delhi-6.jpg"
+  },
+  {
+    "slug": "fleet-car",
+    "file": "/images/fleet-car.jpg",
+    "title": "Toyota Innova Crysta 2.4 Z side",
+    "author": "Premnath Kudva",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Toyota_Innova_Crysta_2.4_Z_side.jpg"
+  },
+  {
+    "slug": "fleet-traveller",
+    "file": "/images/fleet-traveller.jpg",
+    "title": "Force Motors - Traveller 26 - Agra 2014-05-14 4222",
+    "author": "Biswarup Ganguly",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG"
+  },
+  {
+    "slug": "fleet-bus",
+    "file": "/images/fleet-bus.jpg",
+    "title": "Scania Metrolink HD 14.5 M Ashwamedh",
+    "author": "Karthik Nadar",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Scania_Metrolink_HD_14.5_M_Ashwamedh.jpg"
   }
 ];

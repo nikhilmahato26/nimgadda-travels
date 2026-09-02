@@ -1,5 +1,15 @@
 import Image from "next/image";
-import { Wind, ShowerHead, Tv, Wifi, ArrowUpDown, CircleParking, Check } from "lucide-react";
+import Link from "next/link";
+import {
+  Wind,
+  ShowerHead,
+  Tv,
+  Wifi,
+  ArrowUpDown,
+  CircleParking,
+  Check,
+  ArrowRight,
+} from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import { Container, Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
@@ -12,7 +22,7 @@ import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 export const metadata = {
   title: "Rooms",
   description:
-    "Air-conditioned deluxe and super deluxe rooms in Panday Haweli, Varanasi, a walk from Kashi Vishwanath. Lift, car parking, hot water, Wi-Fi and LED televisions.",
+    "Three room categories in Panday Haweli, Varanasi, a walk from Kashi Vishwanath: AC, Deluxe and Super Deluxe. Lift, car parking, hot water, Wi-Fi and LED televisions.",
 };
 
 const amenityIcons = {
@@ -30,8 +40,8 @@ export default async function RoomsPage() {
   return (
     <>
       <PageHeader
-        title="Deluxe and super deluxe rooms in the old city"
-        intro="Both categories are air-conditioned, both have a lift and car parking, and both are close enough to Kashi Vishwanath to walk."
+        title="Three room categories in the old city"
+        intro="AC, Deluxe and Super Deluxe. Every one of them is air-conditioned, has lift access and car parking, and is close enough to Kashi Vishwanath to walk."
       />
 
       <Section>
@@ -61,7 +71,7 @@ export default async function RoomsPage() {
           <div className="mt-12 space-y-4">
             {rooms.map((room, i) => (
               <Reveal key={room.slug} step={i}>
-                <article className="grid gap-0 overflow-hidden rounded-surface border border-line bg-surface-3 lg:grid-cols-[1fr_1.1fr]">
+                <article className="grid overflow-hidden rounded-surface border border-line bg-surface-3 lg:grid-cols-[1fr_1.15fr]">
                   <div className="relative aspect-[16/10] w-full bg-surface-2 lg:aspect-auto lg:min-h-[320px]">
                     {room.image ? (
                       <Image
@@ -87,10 +97,13 @@ export default async function RoomsPage() {
                   </div>
 
                   <div className="p-7 lg:p-10">
-                    <h2 className="font-display text-2xl font-bold tracking-tight lg:text-3xl">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-accent-ink">
+                      {room.tagline}
+                    </p>
+                    <h2 className="mt-2 font-display text-2xl font-bold tracking-tight lg:text-3xl">
                       {room.name}
                     </h2>
-                    <p className="mt-1 text-[13px] font-medium uppercase tracking-[0.1em] text-accent-ink">
+                    <p className="mt-1 text-[14px] font-medium text-muted">
                       {room.occupancy}
                     </p>
                     <p className="mt-4 text-[16px] leading-relaxed text-muted">
@@ -98,7 +111,7 @@ export default async function RoomsPage() {
                     </p>
 
                     <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                      {room.amenities.map((a) => (
+                      {room.amenities.slice(0, 6).map((a) => (
                         <li
                           key={a}
                           className="flex items-center gap-2 text-[15px]"
@@ -114,13 +127,23 @@ export default async function RoomsPage() {
                       ))}
                     </ul>
 
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <Button href={whatsappLink(whatsappMessages.rooms(room.name))}>
-                        Ask about this room
+                    <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <Button href={`/rooms/${room.slug}`}>
+                        See this room
+                        <ArrowRight
+                          size={16}
+                          strokeWidth={1.5}
+                          aria-hidden="true"
+                        />
                       </Button>
-                      <Button href="#enquire" variant="secondary">
-                        Send an enquiry
-                      </Button>
+                      <Link
+                        href={whatsappLink(whatsappMessages.rooms(room.name))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[15px] font-semibold transition-colors hover:text-accent-ink"
+                      >
+                        Ask on WhatsApp
+                      </Link>
                     </div>
                   </div>
                 </article>

@@ -9,6 +9,7 @@ const OUT = path.join(ROOT, "public/images");
 fs.mkdirSync(OUT, { recursive: true });
 
 const WANTED = [
+  ["kashi-temple", "File:Shri Kashi Vishwanath Temple 2.jpg"],
   ["ganga-sunrise", "File:Boats at sunrise Ganges River Varanasi Uttar Pradesh Schwiki.jpg"],
   ["ganga-aarti", "File:Ganga Aarti at Varanasi in the evening.jpg"],
   ["kashi-vishwanath", "File:Shri Kashi Vishwanath Temple 3.jpg"],
@@ -24,6 +25,10 @@ const WANTED = [
   ["agra", "File:Taj Mahal, Agra, India edit2.jpg"],
   ["gaya", "File:Vishnupad temple gaya bihar.jpg"],
   ["andhra-meals", "File:South Indian thali-Saravana bhawan-New Delhi-6.jpg"],
+  // Fleet: stock photos of the vehicle type, not the trust's own vehicles.
+  ["fleet-car", "File:Toyota Innova Crysta 2.4 Z side.jpg"],
+  ["fleet-traveller", "File:Force Motors - Traveller 26 - Agra 2014-05-14 4222.JPG"],
+  ["fleet-bus", "File:Scania Metrolink HD 14.5 M Ashwamedh.jpg"],
 ];
 
 const UA = { "User-Agent": "nimmagadda-vari-trust-site/1.0 (build script)" };
