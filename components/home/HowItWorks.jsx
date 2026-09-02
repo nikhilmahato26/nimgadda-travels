@@ -45,15 +45,16 @@ export default function HowItWorks() {
             <figure>
               <div className="settle-media relative aspect-[4/5] w-full overflow-hidden rounded-card">
                 <Image
-                  src="/images/ghats-pilgrims.jpg"
-                  alt="Pilgrims on the ghats at Varanasi"
+                  src="/images/dashashwamedh-ghat.jpg"
+                  alt="Boats moored at Dashashwamedh Ghat, Varanasi"
                   fill
                   sizes="(max-width: 1024px) 100vw, 26rem"
                   className="object-cover"
                 />
               </div>
               <figcaption className="mt-3 text-[14px] leading-relaxed text-muted">
-                The ghats, a short walk from the building in Panday Haweli.
+                Dashashwamedh Ghat, a short walk from the building in Panday
+                Haweli.
               </figcaption>
             </figure>
           </Reveal>
