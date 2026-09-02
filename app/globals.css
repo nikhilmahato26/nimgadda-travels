@@ -12,6 +12,10 @@
     --accent-ink  the yellow-family colour for TEXT on light surfaces (5.3:1).
   Never write text in --accent on --surface.
 
+  The page ground is white from top to bottom. --surface-2 is a whisper of
+  tint for small component fills (chips, tab groups, stat tiles) and is never
+  used as a full-width section band; sections are separated by hairlines.
+
   Shape lock (one documented rule, applied everywhere):
     - buttons, chips, inputs, nav, avatars .... --r-pill (fully rounded)
     - cards, panels, media ................... --r-card (20px)
@@ -23,7 +27,7 @@
 
 :root {
   --surface: #ffffff;
-  --surface-2: #f2f2f4;
+  --surface-2: #f7f7f8;
   --surface-3: #ffffff;
 
   --text: #111318;
@@ -151,6 +155,56 @@ body {
 */
 .hero-copy {
   text-shadow: 0 1px 3px rgb(17 19 24 / 0.45), 0 2px 28px rgb(17 19 24 / 0.55);
+}
+
+/*
+  Micro-interactions. All CSS, all gated on a real pointer and on the reader
+  not having asked for reduced motion. Each one has a job:
+
+    .lift        a card rises under the cursor, so it reads as clickable
+    .zoom-media  its photograph pushes in slightly, reinforcing the same
+    .parallax    the hero and banner images drift as you scroll past them,
+                 which gives the page depth at its two full-bleed moments
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .lift {
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .zoom-media img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-float);
+    }
+    .lift:hover .zoom-media img,
+    .zoom-media:hover img {
+      transform: scale(1.06);
+    }
+  }
+}
+
+@keyframes parallax-drift {
+  from {
+    transform: scale(1.16) translate3d(0, -3.5%, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(0, 4.5%, 0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
 }
 
 /* Horizontal scroll rails: hide the bar, keep the scrolling */

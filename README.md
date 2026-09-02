@@ -93,6 +93,15 @@ its lime accent replaced by yellow.
   at 5.3:1. Tokens live in `app/globals.css`; components never hardcode a hex.
 - Shape lock: every interactive control is a pill, every card and image is
   20px. Nothing uses another radius.
+- The ground is white from top to bottom. `--surface-2` is a whisper of tint
+  for small component fills only; sections are separated by hairlines, never
+  by a grey band.
+- Motion is entirely CSS, so it costs no JavaScript. Scroll reveals and the
+  two full-bleed parallax images run on `animation-timeline: view()`; cards
+  lift and their photographs push in on hover. Everything sits behind
+  `prefers-reduced-motion: no-preference`, and hover effects also behind
+  `(hover: hover)` so nothing fires on touch. Verified: under reduced motion
+  every animation computes to `none`.
 - The hero search card is a real control: it composes a WhatsApp message from
   what you pick and opens a chat. It does not pretend to search a database.
 - Scroll reveals are CSS scroll-driven animations, not JavaScript. Content is

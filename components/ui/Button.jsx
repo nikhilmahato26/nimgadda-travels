@@ -15,8 +15,8 @@ const base =
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-pill px-6 py-3 text-[15px] font-semibold tracking-tight transition-all duration-200 active:translate-y-px disabled:pointer-events-none disabled:opacity-60";
 
 const variants = {
-  accent: "bg-accent text-on-accent hover:brightness-95",
-  ink: "bg-ink text-on-ink hover:opacity-90",
+  accent: "bg-accent text-on-accent hover:brightness-95 hover:-translate-y-0.5",
+  ink: "bg-ink text-on-ink hover:opacity-90 hover:-translate-y-0.5",
   outline:
     "border border-line bg-surface-3 text-text hover:border-ink hover:bg-surface-2",
   onPhoto: "bg-surface text-text hover:bg-surface-2",

@@ -35,7 +35,7 @@ export default async function PackageDetailPage({ params }) {
 
   return (
     <>
-      <header className="border-b border-line bg-surface-2">
+      <header className="border-b border-line">
         <Container className="py-12 lg:py-16">
           <Link
             href="/packages"
@@ -176,7 +176,7 @@ export default async function PackageDetailPage({ params }) {
         </Container>
       </Section>
 
-      <Section id="enquire" className="border-t border-line bg-surface-2">
+      <Section id="enquire" className="border-t border-line">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>

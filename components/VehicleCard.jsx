@@ -15,8 +15,8 @@ export default function VehicleCard({ vehicle }) {
   );
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface-3">
-      <div className="relative aspect-[4/3] w-full bg-surface-2">
+    <article className="lift flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface-3">
+      <div className="zoom-media relative aspect-[4/3] w-full overflow-hidden bg-surface-2">
         {vehicle.image ? (
           <Image
             src={vehicle.image}

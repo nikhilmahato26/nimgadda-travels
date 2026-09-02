@@ -38,7 +38,7 @@ export default async function RoomDetailPage({ params }) {
 
   return (
     <>
-      <header className="border-b border-line bg-surface-2">
+      <header className="border-b border-line">
         <Container className="py-12 lg:py-16">
           <Link
             href="/rooms"
@@ -156,7 +156,7 @@ export default async function RoomDetailPage({ params }) {
 
       {/* The rooms are not photographed yet, so this shows the streets around
           the building instead. Captioned so it is never mistaken for the room. */}
-      <Section className="border-y border-line bg-surface-2">
+      <Section className="border-y border-line">
         <Container>
           <h2 className="font-display text-2xl font-extrabold tracking-tight">
             What is around you
@@ -216,7 +216,7 @@ export default async function RoomDetailPage({ params }) {
         </Container>
       </Section>
 
-      <Section id="enquire" className="border-t border-line bg-surface-2">
+      <Section id="enquire" className="border-t border-line">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>

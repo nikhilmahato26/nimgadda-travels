@@ -18,7 +18,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="-z-10 object-cover object-[50%_42%]"
+          className="parallax -z-10 object-cover object-[50%_42%]"
         />
         {/*
           Scrim: without it the white headline fails contrast against the hazy

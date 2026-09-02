@@ -40,8 +40,8 @@ export default function TrustStats({ rooms, vehicles, packages, destinations }) 
             <Reveal key={s.label} step={i}>
               <div
                 className={cn(
-                  "flex h-full flex-col rounded-card p-6",
-                  s.highlight ? "bg-accent" : "bg-surface-2"
+                  "lift flex h-full flex-col rounded-card p-6",
+                  s.highlight ? "bg-accent" : "border border-line bg-surface-2"
                 )}
               >
                 <p

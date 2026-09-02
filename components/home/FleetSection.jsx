@@ -14,7 +14,7 @@ export default function FleetSection({ vehicles }) {
   const featured = vehicles.slice(0, FEATURED_COUNT);
 
   return (
-    <Section id="travels" className="border-b border-line bg-surface-2">
+    <Section id="travels" className="border-y border-line">
       <Container>
         <SectionHeading
           title={"Vehicles for four people or forty nine"}

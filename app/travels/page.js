@@ -45,7 +45,7 @@ export default async function TravelsPage() {
         </Container>
       </Section>
 
-      <Section id="enquire" className="border-t border-line bg-surface-2">
+      <Section id="enquire" className="border-t border-line">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div>

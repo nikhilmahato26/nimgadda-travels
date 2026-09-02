@@ -31,7 +31,7 @@ export default function DestinationsRail({ destinations }) {
               key={place.slug}
               className="w-[74vw] shrink-0 snap-start sm:w-[19rem]"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-card">
+              <div className="zoom-media relative aspect-[4/5] w-full overflow-hidden rounded-card">
                 <Image
                   src={place.image}
                   alt={place.alt}

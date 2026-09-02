@@ -16,7 +16,7 @@ export default function CtaBanner() {
           alt="Boats on the Ganges at sunrise below the ghats of Varanasi"
           fill
           sizes="100vw"
-          className="-z-10 object-cover"
+          className="parallax -z-10 object-cover"
         />
         <div
           aria-hidden="true"

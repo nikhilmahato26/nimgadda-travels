@@ -17,7 +17,7 @@ const UNCONFIRMED = "Duration on request";
 
 export default function PackagesSection({ packages }) {
   return (
-    <Section className="bg-surface-2">
+    <Section>
       <Container>
         <SectionHead lead="Explore" trail="yatra packages">
           <Link
@@ -31,8 +31,8 @@ export default function PackagesSection({ packages }) {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.slug} step={i} className="h-full">
-              <article className="flex h-full flex-col overflow-hidden rounded-card bg-surface-3 shadow-[var(--shadow-card)]">
-                <div className="relative aspect-[16/11] w-full">
+              <article className="lift flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface-3 shadow-[var(--shadow-card)]">
+                <div className="zoom-media relative aspect-[16/11] w-full overflow-hidden">
                   <Image
                     src={pkg.image}
                     alt={pkg.imageAlt}

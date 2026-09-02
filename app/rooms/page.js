@@ -153,7 +153,7 @@ export default async function RoomsPage() {
         </Container>
       </Section>
 
-      <section className="border-y border-line bg-surface-2 py-16">
+      <section className="border-y border-line py-16">
         <Container>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {stayHighlights.map((h) => (

@@ -5,7 +5,7 @@ import { faqs } from "@/data/faqs";
 
 export default function FaqSection() {
   return (
-    <Section id="faq" className="bg-surface-2">
+    <Section id="faq" className="border-t border-line">
       <Container>
         <div className="max-w-2xl">
           <TwoTone lead="Questions" trail="we get asked" />
