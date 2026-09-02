@@ -27,6 +27,9 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <PackagesSection packages={packages} />
+      <StaySection rooms={rooms} />
+      <FleetSection vehicles={vehicles} />
       <DestinationsRail destinations={destinations} />
       <TrustStats
         rooms={rooms.length}
@@ -34,11 +37,8 @@ export default async function HomePage() {
         packages={packages.length}
         destinations={destinations.length}
       />
-      <PackagesSection packages={packages} />
-      <StaySection rooms={rooms} />
       <HowItWorks />
       <MealsSection />
-      <FleetSection vehicles={vehicles} />
       <FaqSection />
       <Testimonials />
       <CtaBanner />
