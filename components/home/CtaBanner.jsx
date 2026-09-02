@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
+import Reveal from "@/components/ui/Reveal";
 
 /*
   Full-bleed photograph with centred copy, as in the reference. The scrim is
@@ -24,6 +25,7 @@ export default function CtaBanner() {
         />
 
         <Container className="py-20 text-center lg:py-28">
+          <Reveal>
           <h2 className="hero-copy mx-auto max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl">
             Make the yatra without arranging it yourself
           </h2>
@@ -35,6 +37,7 @@ export default function CtaBanner() {
               Start an enquiry
             </Button>
           </div>
+          </Reveal>
         </Container>
       </div>
     </section>

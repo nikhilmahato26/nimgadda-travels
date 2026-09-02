@@ -27,13 +27,13 @@ export default function TrustStats({ rooms, vehicles, packages, destinations }) 
   return (
     <Section>
       <Container>
-        <div className="grid gap-6 lg:grid-cols-[1fr_minmax(0,26rem)] lg:items-end">
+        <Reveal><div className="grid gap-6 lg:grid-cols-[1fr_minmax(0,26rem)] lg:items-end">
           <TwoTone lead="Get to know more" trail="about the trust" />
           <p className="text-[15px] leading-relaxed text-muted lg:text-right">
             Rooms, a kitchen and a fleet under one roof, so one phone call
             settles the whole trip.
           </p>
-        </div>
+        </div></Reveal>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (

@@ -34,16 +34,16 @@ export default function HowItWorks() {
   return (
     <Section>
       <Container>
-        <SectionHead lead="How a booking" trail="actually works">
+        <Reveal><SectionHead lead="How a booking" trail="actually works">
           <Button href="/contact" variant="accent">
             Start an enquiry
           </Button>
-        </SectionHead>
+        </SectionHead></Reveal>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-10">
           <Reveal>
             <figure>
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-card">
+              <div className="settle-media relative aspect-[4/5] w-full overflow-hidden rounded-card">
                 <Image
                   src="/images/ghats-pilgrims.jpg"
                   alt="Pilgrims on the ghats at Varanasi"

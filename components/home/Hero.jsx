@@ -32,21 +32,21 @@ export default function Hero() {
 
         <div className="mx-auto flex min-h-[42rem] w-full max-w-7xl flex-col justify-end px-5 pb-6 pt-28 sm:px-8 lg:min-h-[46rem] lg:pt-24">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="inline-flex rounded-pill bg-white/15 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
+            <p className="enter inline-flex rounded-pill bg-white/15 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
               Kasi, Tirupathi and Arunachalam
             </p>
 
-            <h1 className="hero-copy mt-6 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 style={{ "--enter-step": 1 }} className="enter hero-copy mt-6 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Stay a Walk from Kashi Vishwanath
             </h1>
 
-            <p className="hero-copy mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-white/90">
+            <p style={{ "--enter-step": 2 }} className="enter hero-copy mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-white/90">
               Air-conditioned rooms, Andhra meals cooked fresh, and yatra
               packages across the northern circuit.
             </p>
           </div>
 
-          <div className="mx-auto mt-10 w-full max-w-5xl">
+          <div style={{ "--enter-step": 3 }} className="enter mx-auto mt-10 w-full max-w-5xl">
             <HeroSearchCard />
           </div>
         </div>

@@ -19,14 +19,14 @@ export default function PackagesSection({ packages }) {
   return (
     <Section>
       <Container>
-        <SectionHead lead="Explore" trail="yatra packages">
+        <Reveal><SectionHead lead="Explore" trail="yatra packages">
           <Link
             href="/packages"
             className="rounded-pill bg-accent px-5 py-2.5 text-[14px] font-bold text-on-accent transition-all hover:brightness-95"
           >
             All packages
           </Link>
-        </SectionHead>
+        </SectionHead></Reveal>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {packages.map((pkg, i) => (

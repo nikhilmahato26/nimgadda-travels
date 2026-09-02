@@ -30,10 +30,10 @@ export default function StaySection({ rooms, amenities }) {
   return (
     <Section id="rooms">
       <Container>
-        <SectionHeading
+        <Reveal><SectionHeading
           title="Three room categories, one short walk from the temple"
           body="Every category is air-conditioned, with lift access and parking at the building. Photographs of the rooms are being taken now and will be added here."
-        />
+        /></Reveal>
 
         <div className="mt-12 grid gap-4 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
           <Reveal>

@@ -16,10 +16,12 @@ export default function FleetSection({ vehicles }) {
   return (
     <Section id="travels" className="border-y border-line">
       <Container>
-        <SectionHeading
-          title={"Vehicles for four people or forty nine"}
-          body="Our own fleet, so the same people answering the phone are the ones arranging the driver."
-        />
+        <Reveal>
+          <SectionHeading
+            title={"Vehicles for four people or forty nine"}
+            body="Our own fleet, so the same people answering the phone are the ones arranging the driver."
+          />
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((vehicle, i) => (

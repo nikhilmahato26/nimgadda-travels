@@ -16,7 +16,9 @@ export default function DestinationsRail({ destinations }) {
   return (
     <Section className="overflow-hidden">
       <Container>
-        <SectionHead lead="Popular" trail="destinations" />
+        <Reveal>
+          <SectionHead lead="Popular" trail="destinations" />
+        </Reveal>
       </Container>
 
       <Reveal>
@@ -29,7 +31,7 @@ export default function DestinationsRail({ destinations }) {
           {destinations.map((place) => (
             <article
               key={place.slug}
-              className="w-[74vw] shrink-0 snap-start sm:w-[19rem]"
+              className="rail-reveal w-[74vw] shrink-0 snap-start sm:w-[19rem]"
             >
               <div className="zoom-media relative aspect-[4/5] w-full overflow-hidden rounded-card">
                 <Image

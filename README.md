@@ -96,12 +96,21 @@ its lime accent replaced by yellow.
 - The ground is white from top to bottom. `--surface-2` is a whisper of tint
   for small component fills only; sections are separated by hairlines, never
   by a grey band.
-- Motion is entirely CSS, so it costs no JavaScript. Scroll reveals and the
-  two full-bleed parallax images run on `animation-timeline: view()`; cards
-  lift and their photographs push in on hover. Everything sits behind
-  `prefers-reduced-motion: no-preference`, and hover effects also behind
-  `(hover: hover)` so nothing fires on touch. Verified: under reduced motion
-  every animation computes to `none`.
+- Motion is entirely CSS, so it costs no JavaScript:
+  - the hero's parts arrive in reading order on load (`.enter`, capped at
+    ~300ms total so it never delays the read)
+  - headings, copy, cards and stat tiles reveal on scroll (`.reveal`)
+  - rail cards reveal on the horizontal axis via `view(inline)`, so they
+    animate as they are flicked in rather than on page scroll
+  - the hero and CTA photographs drift with parallax; standalone section
+    photographs settle from slightly over-scaled (`.settle-media`)
+  - cards lift and their photographs push in on hover; accordions grow open
+    via `::details-content`
+  Everything sits behind `prefers-reduced-motion: no-preference`, hover
+  effects also behind `(hover: hover)` so nothing fires on touch, and the
+  accordion transition behind `@supports selector(details::details-content)`.
+  Verified in the browser: under reduced motion every animation computes to
+  `none` and no element is left below full opacity.
 - The hero search card is a real control: it composes a WhatsApp message from
   what you pick and opens a chat. It does not pretend to search a database.
 - Scroll reveals are CSS scroll-driven animations, not JavaScript. Content is

@@ -42,7 +42,7 @@ export default function MealsSection() {
           </Reveal>
 
           <Reveal step={1}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
+            <div className="settle-media relative aspect-[4/3] w-full overflow-hidden rounded-card">
               <Image
                 src="/images/andhra-meals.jpg"
                 alt="A South Indian vegetarian meal served on a plate"
