@@ -21,8 +21,10 @@
     - cards, panels, media ................... --r-card (20px)
   Nothing on the page uses any other radius.
 
-  Theme strategy: semantic CSS variables, swapped once under
-  prefers-color-scheme. Components never hardcode a hex.
+  Theme strategy: semantic CSS variables, all defined once below. The site is
+  intentionally locked to this light theme regardless of the visitor's system
+  preference (the client asked for a white background) - there is no
+  prefers-color-scheme block. Components never hardcode a hex.
 */
 
 :root {
@@ -49,29 +51,6 @@
   --shadow-float: 0 2px 6px rgb(17 19 24 / 0.08), 0 20px 48px rgb(17 19 24 / 0.14);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface: #0e0f12;
-    --surface-2: #17191e;
-    --surface-3: #1b1e24;
-
-    --text: #f2f3f5;
-    --text-muted: #a1a7b3;
-    --line: #2a2d35;
-
-    --ink: #f2f3f5;
-    --on-ink: #0e0f12;
-
-    /* Yellow already reads well on a dark ground, so accent text can use it */
-    --accent: #ffd60a;
-    --on-accent: #111318;
-    --accent-ink: #f5cd3a;
-
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px rgb(0 0 0 / 0.45);
-    --shadow-float: 0 2px 6px rgb(0 0 0 / 0.45), 0 20px 48px rgb(0 0 0 / 0.6);
-  }
-}
-
 @theme inline {
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -93,6 +72,10 @@
 }
 
 html {
+  /* Tells the browser this page is light-only, so native widgets (date
+     pickers, scrollbars, form controls) render light even on a device set to
+     dark mode, matching the page around them. */
+  color-scheme: light;
   scroll-behavior: smooth;
   /* Sticky header clearance for in-page anchors */
   scroll-padding-top: 6rem;

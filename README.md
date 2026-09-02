@@ -116,7 +116,10 @@ its lime accent replaced by yellow.
 - Scroll reveals are CSS scroll-driven animations, not JavaScript. Content is
   visible in the server HTML and the animation is pure enhancement, so nothing
   is hidden on a slow connection or with JS disabled.
-- Light and dark are both defined; the page follows `prefers-color-scheme`.
+- The theme is locked to light. There is no `prefers-color-scheme: dark`
+  block: the client asked for a white background, so the page stays white
+  even when the visitor's device is set to dark mode. `color-scheme: light`
+  is set on `<html>` so native controls (date pickers, scrollbars) match.
 
 ## Sections that are off until you send content
 
