@@ -1,17 +1,13 @@
+// Schema mirrors the shape of the files in /data, so `node prisma/seed.js`
+// loads the site as it stands today and lib/content.js can switch over without
+// any page changing.
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-}
-
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model SiteSetting {
@@ -22,95 +18,72 @@ model SiteSetting {
   updatedAt DateTime @updatedAt
 }
 
-model Service {
-  id          String   @id @default(uuid())
-  slug        String   @unique
-  name        String
-  description String
-  icon        String
-  image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model Feature {
-  id        String   @id @default(uuid())
-  title     String
-  icon      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model TripType {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Vehicle {
-  id          String   @id @default(uuid())
-  slug        String   @unique
-  name        String
-  description String
-  image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model HolidayCollection {
+model Room {
   id        String   @id @default(uuid())
   slug      String   @unique
-  title     String
-  image     String
+  name      String
+  summary   String
+  occupancy String
+  image     String?
+  amenities Json
+  order     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model HolidayPackage {
-  id            String   @id @default(uuid())
-  slug          String   @unique
-  title         String
-  overview      String?
-  originCity    String
-  placesCovered String
-  validity      String
-  duration      String
-  category      String
-  hotels        String
-  startingPrice Float
-  image         String
-  pricing       Json     // Store as JSON object mapping string to string
-  itinerary     Json     // Store as array of objects {day, title, description}
-  inclusions    Json     // Store as array of strings
-  exclusions    Json     // Store as array of strings
-  terms         Json     // Store as array of strings
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+model Package {
+  id                String   @id @default(uuid())
+  slug              String   @unique
+  name              String
+  summary           String
+  pricePerPerson    Int
+  duration          String?
+  places            Json?
+  stay              String
+  meals             String
+  inclusions        Json
+  exclusions        Json
+  image             String
+  imageAlt          String
+  needsConfirmation Json
+  order             Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model FleetGroup {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  label     String
+  range     String
+  vehicles  Json
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Destination {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  name      String
+  where     String
+  note      String
+  image     String
+  alt       String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Lead {
   id        String   @id @default(uuid())
   name      String
   phone     String
-  source    String
+  need      String
+  people    Int?
+  arrival   String?
+  message   String?
   status    String   @default("new")
-  details   Json
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Hotel {
-  id            String   @id @default(uuid())
-  slug          String   @unique
-  title         String
-  location      String
-  starRating    Int
-  startingPrice Float
-  image         String
-  description   String
-  amenities     Json     // Store as array of strings
-  terms         Json     // Store as array of strings
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
 }

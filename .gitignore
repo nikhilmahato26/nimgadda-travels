@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# playwright mcp artifacts
+/.playwright-mcp/
+
+# keep the documented example, ignore real env files
+!.env.example

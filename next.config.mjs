@@ -1,31 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-        port: "",
-        pathname: "/**",
-        search: "",
-      },
-      {
-        protocol: "https",
-        hostname: "fastly.picsum.photos",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/**",
-      },
-    ],
+    // All photography is served from /public, so no remote hosts are allowed.
+    // If the trust later uploads room photos to a CDN, add that host here.
+    remotePatterns: [],
+    formats: ["image/avif", "image/webp"],
   },
 };
 

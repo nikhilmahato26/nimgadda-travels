@@ -1,116 +1,51 @@
+// Single source of truth for the trust's identity and contact details.
+// Every value here comes from the client. Seeded into SiteSetting when a
+// DATABASE_URL is configured (see prisma/seed.js).
+
 export const business = {
-  name: "Kwik2Travels",
-  tagline: "Cab & Travel Services",
-  slogan: "We Are Too Quicker",
-  logo: "/logo.png",
-  phoneDisplay: "+91 93291 16616",
-  phoneTel: "tel:+919329116616",
-  whatsapp: "https://wa.me/919329116616",
-  phoneDisplay2: "+91 62323 22216",
-  phoneTel2: "tel:+916232322216",
-  services: [
-    {
-      slug: "airport-transfers",
-      name: "Airport Transfers",
-      description: "Reliable pickup and drop service.",
-      icon: "Plane",
-      image: "/images/airport-transfer.jpg",
-    },
-    {
-      slug: "one-way-cab",
-      name: "One Way Cab",
-      description: "Convenient point-to-point travel.",
-      icon: "ArrowRight",
-      image: "/images/one-way-cab.jpg",
-    },
-    {
-      slug: "round-trip",
-      name: "Round Trip",
-      description: "Comfortable return journeys.",
-      icon: "Repeat",
-      image: "/images/round-trip.jpg",
-    },
-    {
-      slug: "outstation-travel",
-      name: "Outstation Travel",
-      description: "Travel beyond the city with ease.",
-      icon: "Route",
-      image: "/images/outstation-travel.jpg",
-    },
-    {
-      slug: "local-cab",
-      name: "Local Cab",
-      description: "Convenient transportation for local requirements.",
-      icon: "Car",
-      image: "/images/local-cab.jpg",
-    },
-    {
-      slug: "tour-travel",
-      name: "Tour & Travel",
-      description: "Transportation for planned trips and tours.",
-      icon: "Compass",
-      image: "/images/tour-travel.jpg",
-    },
-    {
-      slug: "flight-booking",
-      name: "Flight Bookings",
-      description: "Domestic and international flight tickets.",
-      icon: "Plane",
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      slug: "holiday-packages",
-      name: "Holiday Packages",
-      description: "Curated domestic and international tours.",
-      icon: "Palmtree",
-      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      slug: "hotel-reservations",
-      name: "Hotel Reservations",
-      description: "Comfortable stays across the globe.",
-      icon: "Building2",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      slug: "cabs-rentals",
-      name: "Cabs & Rentals",
-      description: "Hassle-free transportation solutions.",
-      icon: "Car",
-      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      slug: "visa-assistance",
-      name: "Visa Assistance",
-      description: "Expert guidance for your travel visas.",
-      icon: "Passport",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
-    },
-  ],
-  whyChooseUs: [
-    { title: "Comfortable Cars", icon: "Armchair" },
-    { title: "Professional Service", icon: "BadgeCheck" },
-    { title: "Easy Booking", icon: "CalendarCheck" },
-    { title: "Flexible Travel", icon: "Route" },
-    { title: "Clean Vehicles", icon: "Sparkles" },
-    { title: "Customer-Focused Service", icon: "HeartHandshake" },
-  ],
-  tripTypes: [
-    "One Way",
-    "Round Trip",
-    "Airport Transfer",
-    "Local",
-    "Outstation",
-    "Tour Package",
-  ],
-  navLinks: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
-    { label: "Holidays", href: "/holidays" },
-    { label: "Hotels", href: "/hotels" },
-    { label: "Services", href: "/services" },
-    { label: "Our Fleet", href: "/fleet" },
-    { label: "Booking", href: "/booking" },
+  name: "Nimmagadda Vari Charitable Trust",
+  shortName: "Nimmagadda Vari",
+  tagline: "Deluxe rooms and travels in Kasi, with Andhra food",
+  circuit: ["Kasi", "Tirupathi", "Arunachalam"],
+
+  trustee: {
+    name: "T. N. Venkata Krishna",
+    role: "Trust Member",
+  },
+
+  phoneDisplay: "+91 72079 35649",
+  phoneTel: "tel:+917207935649",
+  whatsappNumber: "917207935649",
+
+  address: {
+    line1: "28/193, Panday Haweli",
+    line2: "Next to Cycle Baba Ashram",
+    city: "Varanasi (Kasi)",
+    state: "Uttar Pradesh",
+    pincode: "221001",
+  },
+
+  // Used for the "get directions" link and the contact page map link.
+  mapsQuery: "Panday Haweli, Varanasi, Uttar Pradesh 221001",
+
+  nav: [
+    { label: "Rooms", href: "/rooms" },
+    { label: "Packages", href: "/packages" },
+    { label: "Travels", href: "/travels" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
 };
+
+export const addressLines = [
+  business.address.line1,
+  business.address.line2,
+  `${business.address.city} ${business.address.pincode}`,
+];
+
+export const addressOneLine = [
+  business.address.line1,
+  business.address.line2,
+  business.address.city,
+  business.address.pincode,
+].join(", ");

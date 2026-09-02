@@ -1,52 +1,169 @@
 @import "tailwindcss";
 
+/*
+  Nimmagadda Vari Charitable Trust - design tokens
+  ------------------------------------------------
+  Palette is taken from the trust's own seal: deep Kashi navy + temple gold on
+  warm paper. Navy carries the page; gold is rationed to accents, rules and
+  prices so it never drifts into generic brass.
+
+  Shape lock (one documented rule, applied everywhere):
+    - buttons + inputs .......... --r-control (10px)
+    - cards, panels, media ...... --r-surface (18px)
+    - chips / pills ............. fully rounded
+
+  Theme strategy: semantic CSS variables, swapped once under
+  prefers-color-scheme. Never hardcode a hex in a component.
+*/
+
 :root {
-  /* Brand palette: flat colors only, no gradients */
-  --maroon: #6b1f2a;
-  --maroon-deep: #4a121b;
-  --gold: #c89b3c;
-  --gold-light: #e0b85a;
-  --cream: #fff9f0;
-  --off-white: #faf8f4;
-  --text-dark: #241a1c;
-  --white: #ffffff;
+  --surface: #fcfaf6;
+  --surface-2: #f4eee3;
+  --surface-3: #ffffff;
 
-  --background: var(--off-white);
-  --foreground: var(--text-dark);
+  --text: #16233a;
+  --text-muted: #5b6a80;
+  --line: #e4dccd;
 
-  /* Shape consistency lock: buttons/inputs 10px, cards/images 16px, pills full */
-  --radius-control: 10px;
-  --radius-card: 16px;
+  /* Primary action + the deep panels that break up the page */
+  --brand: #0f2440;
+  --on-brand: #ffffff;
+  --panel: #0f2440;
+  --panel-2: #16324f;
+  --on-panel: #f2f5f9;
+  --on-panel-muted: #a8bcd4;
+
+  /* `accent` is the fill colour: gold blocks, rules, icons, and text sitting on
+     the navy panels (5.5:1 there). It is only 2.5:1 on paper, so any accent
+     TEXT on a light surface uses `accent-ink`, a darker gold at 5.1:1. */
+  --accent: #c2921f;
+  --on-accent: #0f2440;
+  --accent-ink: #8a6510;
+
+  --r-control: 10px;
+  --r-surface: 18px;
+
+  --shadow-soft: 0 1px 2px rgb(15 36 64 / 0.04), 0 8px 24px rgb(15 36 64 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(15 36 64 / 0.06), 0 18px 40px rgb(15 36 64 / 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #0b1726;
+    --surface-2: #122236;
+    --surface-3: #16293e;
+
+    --text: #e9eef5;
+    --text-muted: #9fb0c6;
+    --line: #22354b;
+
+    /* On a navy page a navy button disappears, so the primary action becomes
+       the other half of the brand: temple gold carrying navy text. */
+    --brand: #d7a533;
+    --on-brand: #0b1726;
+    --panel: #122236;
+    --panel-2: #1b3350;
+    --on-panel: #e9eef5;
+    --on-panel-muted: #9fb0c6;
+
+    --accent: #e0b24a;
+    --on-accent: #0b1726;
+    --accent-ink: #e0b24a;
+
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+    --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.35), 0 18px 40px rgb(0 0 0 / 0.5);
+  }
 }
 
 @theme inline {
-  --color-maroon: var(--maroon);
-  --color-maroon-deep: var(--maroon-deep);
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-cream: var(--cream);
-  --color-off-white: var(--off-white);
-  --color-text-dark: var(--text-dark);
-  --color-white: var(--white);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-on-brand: var(--on-brand);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-on-panel: var(--on-panel);
+  --color-on-panel-muted: var(--on-panel-muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-ink: var(--accent-ink);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --radius-control: var(--r-control);
+  --radius-surface: var(--r-surface);
 
-  --font-display: var(--font-playfair);
-  --font-sans: var(--font-inter);
-
-  --radius-control: var(--radius-control);
-  --radius-card: var(--radius-card);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-manrope);
 }
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header clearance for in-page anchors */
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Visible, brand-coloured focus for keyboard users on every interactive thing */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+  border-radius: var(--r-control);
+}
+
+/*
+  Scroll reveal. Content is visible by default; the animation only attaches
+  where scroll-driven animations are supported and the reader has not asked for
+  reduced motion. `--reveal-step` staggers a group by shifting the range later,
+  because animation-delay does not apply to a view() timeline.
+*/
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      --reveal-step: 0;
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      /* Ends inside the `entry` phase so a tall card is fully opaque soon
+         after it appears, rather than staying faded most of the way up. */
+      animation-range: entry calc(var(--reveal-step) * 7%)
+        entry calc(50% + var(--reveal-step) * 7%);
+    }
+  }
+}
+
+/* Horizontal scroll rails: hide the bar, keep the scrolling */
+.rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.rail::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -61,9 +178,4 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-::selection {
-  background: var(--gold-light);
-  color: var(--maroon-deep);
 }

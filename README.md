@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nimmagadda Vari Charitable Trust
 
-## Getting Started
-
-First, run the development server:
+Rooms, Andhra meals and yatra packages for pilgrims in Kasi (Varanasi).
+Next.js 16 App Router, Tailwind v4, no database required to run.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How the content works
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Everything the site shows lives in `/data` as plain JavaScript. Pages never
+import those files directly: they call `lib/content.js`, which is the seam
+between the static files and a database.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+data/*.js  ->  lib/content.js  ->  pages
+                     ^
+              prisma (only when DATABASE_URL is set)
+```
 
-## Learn More
+Right now `DATABASE_URL` is empty, so every getter returns the static files and
+all fourteen routes prerender to static HTML. To edit the site today, edit the
+file in `/data` and redeploy.
 
-To learn more about Next.js, take a look at the following resources:
+### Turning on the database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cp .env.example .env      # then fill in DATABASE_URL
+npm run db:generate
+npm run db:push
+npm run db:seed           # loads /data into Postgres
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`prisma/schema.prisma` mirrors the shape of `/data`, and the seed is idempotent
+(every write is an upsert keyed on slug), so you can re-run it after editing a
+data file. Once seeded, `lib/content.js` reads from Postgres instead. **No page
+code changes.** If the database is unreachable it logs and falls back to the
+static content rather than returning a 500.
 
-## Deploy on Vercel
+Enquiries submitted through the form are written to the `Lead` table when a
+database is configured, and logged to the server console when it is not.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content still needed from the trust
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Two details were never specified, so they are `null` in `data/packages.js` and
+marked with `needsConfirmation`. The UI says "confirmed when you book" instead
+of printing a made-up value. Fill them in and the pages update themselves.
+
+| Where | Missing |
+| --- | --- |
+| `data/packages.js` -> `grand-yatra` | Duration. Every other package is 5 days / 6 nights; this one was quoted without a length. |
+| `data/packages.js` -> `kasi-yatra` | The route. It was quoted as "same as above", which is ambiguous about whether the places match the Grand Yatra. |
+
+Room photography is also outstanding. `data/rooms.js` has `image: null` for both
+categories, and the room tiles fall back to a typographic panel. Drop the photos
+into `public/images/rooms/` and set the paths.
+
+## Photography
+
+The current photographs are openly licensed images of Kasi and the yatra route
+from Wikimedia Commons, downloaded into `public/images/` by
+`scripts/fetch-images.mjs`. Attribution data lives in `data/image-credits.js`
+and is published at `/credits`, linked from the footer, because several of the
+licences (CC BY, CC BY-SA, GODL-India) require it. Remove that page only after
+the borrowed images have been replaced with the trust's own.
+
+## Design notes
+
+- Palette comes from the trust's seal: deep navy carries the page, temple gold
+  is the single accent. Tokens are in `app/globals.css`; components never
+  hardcode a hex.
+- `--accent` (gold) is a fill colour and only clears contrast on navy.
+  Accent **text** on light surfaces uses `--accent-ink`, a darker gold, which
+  passes WCAG AA at 5.1:1.
+- Shape lock: buttons and inputs 10px, cards and media 18px, chips fully
+  rounded.
+- Scroll reveals are CSS scroll-driven animations, not JavaScript. Content is
+  visible in the server HTML and the animation is pure enhancement, so nothing
+  is hidden on a slow connection or with JS disabled.
+- Light and dark are both defined; the page follows `prefers-color-scheme`.
+
+## Not built yet
+
+The previous site's admin panel and NextAuth login were removed with the rest of
+the old client's code (they are still in git history). They were tied to the old
+schema and would not compile against the new one. Rebuild them against
+`prisma/schema.prisma` when the trust needs to edit content themselves.
