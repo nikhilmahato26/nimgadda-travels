@@ -85,8 +85,8 @@ export const vehicles = [
     bestFor: "The most comfortable van",
     description:
       "The newest van in the fleet, in twelve and seventeen seat layouts, with the most comfortable seating of the group vehicles.",
-    image: null,
-    imageAlt: null,
+    image: "/images/fleet-urbania.jpg",
+    imageAlt: "A Force Urbania luxury van",
   },
   {
     slug: "maharaja",
