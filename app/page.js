@@ -15,7 +15,6 @@ import {
   getVehicles,
   getDestinations,
 } from "@/lib/content";
-import { roomAmenities } from "@/data/rooms";
 
 export default async function HomePage() {
   const [rooms, packages, vehicles, destinations] = await Promise.all([
@@ -36,7 +35,7 @@ export default async function HomePage() {
         destinations={destinations.length}
       />
       <PackagesSection packages={packages} />
-      <StaySection rooms={rooms} amenities={roomAmenities} />
+      <StaySection rooms={rooms} />
       <HowItWorks />
       <MealsSection />
       <FleetSection vehicles={vehicles} />
