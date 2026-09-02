@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 import { business } from "../data/business.js";
 import { rooms } from "../data/rooms.js";
 import { packages } from "../data/packages.js";
-import { fleetGroups } from "../data/fleet.js";
+import { vehicles } from "../data/fleet.js";
 import { destinations } from "../data/destinations.js";
 
 /*
@@ -71,16 +71,16 @@ async function main() {
   }
   console.log(`Seeded ${packages.length} packages`);
 
-  for (const [i, group] of fleetGroups.entries()) {
-    const { slug, ...rest } = group;
+  for (const [i, vehicle] of vehicles.entries()) {
+    const { slug, ...rest } = vehicle;
     const data = { ...rest, order: i };
-    await prisma.fleetGroup.upsert({
+    await prisma.vehicle.upsert({
       where: { slug },
       update: data,
       create: { slug, ...data },
     });
   }
-  console.log(`Seeded ${fleetGroups.length} fleet groups`);
+  console.log(`Seeded ${vehicles.length} vehicles`);
 
   for (const [i, place] of destinations.entries()) {
     const { slug, ...rest } = place;

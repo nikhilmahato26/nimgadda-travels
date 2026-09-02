@@ -26,12 +26,24 @@ const WANTED = [
   ["gaya", "File:Vishnupad temple gaya bihar.jpg"],
   ["andhra-meals", "File:South Indian thali-Saravana bhawan-New Delhi-6.jpg"],
   // Fleet: stock photos of the vehicle type, not the trust's own vehicles.
-  ["fleet-car", "File:Toyota Innova Crysta 2.4 Z side.jpg"],
+  // No free photograph of the Force Urbania exists, so that card falls back to
+  // a labelled placeholder until the trust sends one.
+  ["fleet-dzire", "File:Maruti Suzuki Dzire VXi VVT.JPG"],
+  ["fleet-tavera", "File:Chevrolet Tavera (samping), Denpasar.jpg"],
+  ["fleet-ertiga", "File:Maruti Suzuki Ertiga(1).jpg"],
+  ["fleet-innova", "File:Toyota Innova Crysta 2.4 Z side.jpg"],
+  ["fleet-winger", "File:Tata Winger van, Bangladesh. (33029016652).jpg"],
+  ["fleet-cruiser", "File:Force Motors Trax Cruiser.jpg"],
+  ["fleet-maharaja", "File:Force Traveller Luxury.jpg"],
   ["fleet-traveller", "File:Force Motors - Traveller 26 - Agra 2014-05-14 4222.JPG"],
   ["fleet-bus", "File:Scania Metrolink HD 14.5 M Ashwamedh.jpg"],
 ];
 
-const UA = { "User-Agent": "nimmagadda-vari-trust-site/1.0 (build script)" };
+const UA = {
+  // Wikimedia requires a descriptive User-Agent with a contact address.
+  "User-Agent":
+    "NimmagaddaVariSite/1.0 (https://nimmagaddavari.in; nikhilmahato369@gmail.com)",
+};
 
 function fetchText(url) {
   return new Promise((res, rej) => {

@@ -128,13 +128,67 @@ export const imageCredits = [
     "source": "https://commons.wikimedia.org/wiki/File:South_Indian_thali-Saravana_bhawan-New_Delhi-6.jpg"
   },
   {
-    "slug": "fleet-car",
-    "file": "/images/fleet-car.jpg",
+    "slug": "fleet-dzire",
+    "file": "/images/fleet-dzire.jpg",
+    "title": "Maruti Suzuki Dzire VXi VVT",
+    "author": "Biswarup Ganguly",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Maruti_Suzuki_Dzire_VXi_VVT.JPG"
+  },
+  {
+    "slug": "fleet-tavera",
+    "file": "/images/fleet-tavera.jpg",
+    "title": "Chevrolet Tavera (samping), Denpasar",
+    "author": "Sabung.hamster",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chevrolet_Tavera_(samping),_Denpasar.jpg"
+  },
+  {
+    "slug": "fleet-ertiga",
+    "file": "/images/fleet-ertiga.jpg",
+    "title": "Maruti Suzuki Ertiga(1)",
+    "author": "Akashpbrahmavar",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Maruti_Suzuki_Ertiga(1).jpg"
+  },
+  {
+    "slug": "fleet-innova",
+    "file": "/images/fleet-innova.jpg",
     "title": "Toyota Innova Crysta 2.4 Z side",
     "author": "Premnath Kudva",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Toyota_Innova_Crysta_2.4_Z_side.jpg"
+  },
+  {
+    "slug": "fleet-winger",
+    "file": "/images/fleet-winger.jpg",
+    "title": "Tata Winger van, Bangladesh. (33029016652)",
+    "author": "Shadman Samee from Dhaka, Bangladesh",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tata_Winger_van,_Bangladesh._(33029016652).jpg"
+  },
+  {
+    "slug": "fleet-cruiser",
+    "file": "/images/fleet-cruiser.jpg",
+    "title": "Force Motors Trax Cruiser",
+    "author": "Abhi",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Force_Motors_Trax_Cruiser.jpg"
+  },
+  {
+    "slug": "fleet-maharaja",
+    "file": "/images/fleet-maharaja.jpg",
+    "title": "Force Traveller Luxury",
+    "author": "वंपायर;Cropped, minor redrawings, and levels adjusted by uploader Mr.choppers",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Force_Traveller_Luxury.jpg"
   },
   {
     "slug": "fleet-traveller",

@@ -6,14 +6,14 @@ import DestinationsRail from "@/components/home/DestinationsRail";
 import MealsSection from "@/components/home/MealsSection";
 import FleetSection from "@/components/home/FleetSection";
 import EnquirySection from "@/components/home/EnquirySection";
-import { getRooms, getPackages, getFleetGroups, getDestinations } from "@/lib/content";
+import { getRooms, getPackages, getVehicles, getDestinations } from "@/lib/content";
 import { roomAmenities } from "@/data/rooms";
 
 export default async function HomePage() {
-  const [rooms, packages, fleetGroups, destinations] = await Promise.all([
+  const [rooms, packages, vehicles, destinations] = await Promise.all([
     getRooms(),
     getPackages(),
-    getFleetGroups(),
+    getVehicles(),
     getDestinations(),
   ]);
 
@@ -25,7 +25,7 @@ export default async function HomePage() {
       <PackagesSection packages={packages} />
       <DestinationsRail destinations={destinations} />
       <MealsSection />
-      <FleetSection groups={fleetGroups} />
+      <FleetSection vehicles={vehicles} />
       <EnquirySection />
     </>
   );

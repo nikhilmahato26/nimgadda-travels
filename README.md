@@ -60,7 +60,10 @@ shows the streets around the building instead, clearly captioned so it is never
 mistaken for the room itself.
 
 The fleet photographs are stock images of each vehicle type, not the trust's own
-vehicles. Replace them in `data/fleet.js` when the client sends real ones.
+vehicles. Replace them in `data/fleet.js` when the client sends real ones. Nine
+of the ten have a photograph; the Force Urbania is recent enough that nothing
+openly licensed exists, so its card falls back to a labelled placeholder. That
+is the one vehicle to photograph first.
 
 ## Rooms
 

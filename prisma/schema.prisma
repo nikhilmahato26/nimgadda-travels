@@ -53,17 +53,19 @@ model Package {
   updatedAt         DateTime @updatedAt
 }
 
-model FleetGroup {
-  id        String   @id @default(uuid())
-  slug      String   @unique
-  label     String
-  range     String
-  image     String
-  imageAlt  String
-  vehicles  Json
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Vehicle {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  seats       String
+  seatCount   Int
+  bestFor     String
+  description String
+  image       String?
+  imageAlt    String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Destination {
