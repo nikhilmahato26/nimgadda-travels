@@ -1,5 +1,5 @@
-// Questions the trust actually gets asked. Answers stay to what is known and
-// avoid promising anything the client has not confirmed.
+// Questions we actually get asked. Answers stay to what is known and avoid
+// promising anything the client has not confirmed.
 
 export const faqs = [
   {

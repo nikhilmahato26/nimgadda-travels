@@ -9,7 +9,7 @@ import { rupees } from "@/lib/utils";
   Card grid in the reference's event-card shape: photograph, title, a meta row,
   then price beside a view-details pill.
 
-  The reference cards carry a star rating. The trust has no collected ratings,
+  The reference cards carry a star rating. We have no collected ratings,
   so that slot shows the duration instead of an invented score.
 */
 

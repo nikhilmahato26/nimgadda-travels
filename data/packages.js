@@ -1,11 +1,11 @@
-// Yatra packages, transcribed from the trust's own rates.
+// Yatra packages, transcribed from the client's own rates.
 //
 // Two details were not specified by the client and are marked with
 // `needsConfirmation` rather than invented. The UI degrades gracefully and
 // shows "confirmed when you book" instead of a made-up number:
 //   1. Package 1 has no stated duration.
 //   2. Package 2 is quoted as "same as above" without repeating the route.
-// Replace the nulls once the trust confirms, and the pages fill themselves in.
+// Replace the nulls once the client confirms, and the pages fill themselves in.
 
 export const packages = [
   {

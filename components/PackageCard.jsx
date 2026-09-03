@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { rupees } from "@/lib/utils";
 
-// Where the trust has not confirmed a detail we say so, rather than printing a
+// Where a detail has not been confirmed we say so, rather than printing a
 // duration or a route that nobody promised.
 const UNCONFIRMED = "Duration confirmed when you book";
 

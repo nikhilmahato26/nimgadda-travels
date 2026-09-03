@@ -5,7 +5,7 @@ export function BrandMark({ className }) {
   return (
     <Image
       src="/images/logo-mark.png"
-      alt="Nimmagadda Vari Charitable Trust Kashi Emblem"
+      alt="Nimmagadda Vari Andhra Tours and Travels emblem"
       width={40}
       height={40}
       className={cn("h-9 w-9 shrink-0 rounded-full object-cover shadow-xs ring-1 ring-black/5", className)}
@@ -23,7 +23,7 @@ export function BrandLockup({ className }) {
           Nimmagadda Vari
         </span>
         <span className="block text-[11px] font-medium text-muted">
-          Charitable Trust
+          Andhra Tours &amp; Travels
         </span>
       </span>
     </span>

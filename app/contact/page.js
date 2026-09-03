@@ -8,7 +8,7 @@ import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 export const metadata = {
   title: "Contact",
   description:
-    "Call or message Nimmagadda Vari Charitable Trust in Panday Haweli, Varanasi 221001, for rooms, yatra packages and vehicles in Kasi.",
+    "Call or message Nimmagadda Vari Andhra Tours and Travels in Panday Haweli, Varanasi 221001, for rooms, yatra packages and vehicles in Kasi.",
 };
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: business.phoneDisplay,
-      body: `${business.trustee.name}, ${business.trustee.role}`,
+      body: `${business.owner.name}, ${business.owner.role}`,
       href: business.phoneTel,
       external: false,
     },
@@ -43,7 +43,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        title="Talk to the trust"
+        title="Talk to us"
         intro="The quickest way is a phone call. If you would rather write, leave your number below and we will call you back."
       />
 

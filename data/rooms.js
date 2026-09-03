@@ -1,5 +1,5 @@
-// The three room categories the trust offers, in ascending order. All three
-// now have real photos.
+// The three room categories, in ascending order. All three now have real
+// photos.
 //
 // `gallery` is an array of photo paths. If a room's array is ever emptied out
 // (a new category added, a room dropped for renovation), its tiles fall back
@@ -145,8 +145,8 @@ export const stayHighlights = [
     body: "Rice, pappu, pachadi and rasam cooked the way you eat at home, not hotel food.",
   },
   {
-    title: "Run by a trust",
-    body: "A charitable trust looking after pilgrims, not a booking agent taking a cut.",
+    title: "One family, not an agency",
+    body: "The rooms, the kitchen and the vehicles are all run by the same family, not resold by a booking agent taking a cut.",
   },
 ];
 
@@ -165,11 +165,11 @@ export const roomPolicies = [
   },
   {
     title: "Check-in and check-out",
-    body: "Arranged directly with the trust around your train or bus timing. Late night arrivals are fine, somebody is awake.",
+    body: "Arranged directly with us around your train or bus timing. Late night arrivals are fine, somebody is awake.",
   },
   {
     title: "Changes to your stay",
-    body: "Call the trust directly. The same people who took the booking can change it.",
+    body: "Call us directly. The same people who took the booking can change it.",
   },
 ];
 

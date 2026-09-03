@@ -1,4 +1,4 @@
-# Nimmagadda Vari Charitable Trust
+# Nimmagadda Vari Andhra Tours and Travels
 
 Rooms, Andhra meals and yatra packages for pilgrims in Kasi (Varanasi).
 Next.js 16 App Router, Tailwind v4, no database required to run.
@@ -42,7 +42,7 @@ static content rather than returning a 500.
 Enquiries submitted through the form are written to the `Lead` table when a
 database is configured, and logged to the server console when it is not.
 
-## Content still needed from the trust
+## Content still needed from the client
 
 Two details were never specified, so they are `null` in `data/packages.js` and
 marked with `needsConfirmation`. The UI says "confirmed when you book" instead
@@ -80,7 +80,7 @@ The same `gallery` field is what seeds into the database once one is connected
 only step: nothing in `lib/content.js`, the Prisma schema, or any room
 component needs to change, before or after the database goes live.
 
-The fleet photographs are stock images of each vehicle type, not the trust's own
+The fleet photographs are stock images of each vehicle type, not the business's own
 vehicles. Replace them in `data/fleet.js` when the client sends real ones. Nine
 of the ten have a photograph; the Force Urbania is recent enough that nothing
 openly licensed exists, so its card falls back to a labelled placeholder. That
@@ -99,7 +99,7 @@ from Wikimedia Commons, downloaded into `public/images/` by
 `scripts/fetch-images.mjs`. Attribution data lives in `data/image-credits.js`
 and is published at `/credits`, linked from the footer, because several of the
 licences (CC BY, CC BY-SA, GODL-India) require it. Remove that page only after
-the borrowed images have been replaced with the trust's own.
+the borrowed images have been replaced with the business's own.
 
 ## Design notes
 
@@ -152,7 +152,7 @@ real quotes in the documented shape and the section appears.
 
 The stat row on the home page shows counts that are true and checkable against
 the rest of the site (room categories, vehicles, packages, places). The
-reference fills that row with growth metrics; a charitable trust has none, and
+reference fills that row with growth metrics; a small family-run travel business has none, and
 inventing them was not an option.
 
 ## Not built yet
@@ -160,4 +160,4 @@ inventing them was not an option.
 The previous site's admin panel and NextAuth login were removed with the rest of
 the old client's code (they are still in git history). They were tied to the old
 schema and would not compile against the new one. Rebuild them against
-`prisma/schema.prisma` when the trust needs to edit content themselves.
+`prisma/schema.prisma` when the client needs to edit content themselves.

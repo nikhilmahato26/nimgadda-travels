@@ -6,17 +6,17 @@ import Reveal from "@/components/ui/Reveal";
 import { business, addressLines } from "@/data/business";
 
 export const metadata = {
-  title: "About the trust",
+  title: "About us",
   description:
-    "Nimmagadda Vari Charitable Trust looks after Telugu pilgrims in Kasi with rooms, Andhra meals and vehicles, on the Kasi, Tirupathi and Arunachalam circuit.",
+    "Nimmagadda Vari Andhra Tours and Travels looks after Telugu pilgrims in Kasi with rooms, Andhra meals and vehicles, on the Kasi, Tirupathi and Arunachalam circuit.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHeader
-        title="A trust that looks after pilgrims in Kasi"
-        intro="Nimmagadda Vari Charitable Trust runs rooms, a kitchen and a fleet of vehicles in Varanasi, mainly for Telugu families making the Kasi, Tirupathi and Arunachalam yatra."
+        title="A family business looking after pilgrims in Kasi"
+        intro="Nimmagadda Vari Andhra Tours and Travels runs rooms, a kitchen and a fleet of vehicles in Varanasi, mainly for Telugu families making the Kasi, Tirupathi and Arunachalam yatra."
       />
 
       <Section>
@@ -47,8 +47,8 @@ export default function AboutPage() {
                   speak.
                 </p>
                 <p>
-                  The trust keeps all three in one place. The rooms are ours,
-                  the kitchen is ours, and the vehicles are ours. The person who
+                  We keep all three in one place. The rooms are ours, the
+                  kitchen is ours, and the vehicles are ours. The person who
                   answers the phone is the person who arranges it.
                 </p>
                 <p>
@@ -60,10 +60,10 @@ export default function AboutPage() {
 
               <div className="mt-9 rounded-card border border-line bg-surface-3 p-6">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-accent-ink">
-                  {business.trustee.role}
+                  {business.owner.role}
                 </p>
                 <p className="mt-2 font-display text-xl font-extrabold tracking-tight">
-                  {business.trustee.name}
+                  {business.owner.name}
                 </p>
                 <address className="mt-3 not-italic text-[15px] leading-relaxed text-muted">
                   {addressLines.map((line) => (

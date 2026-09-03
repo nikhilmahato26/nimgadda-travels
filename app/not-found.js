@@ -15,7 +15,7 @@ export default function NotFound() {
       </h1>
       <p className="mt-5 max-w-[52ch] text-[17px] leading-relaxed text-muted">
         The link may be old or mistyped. Everything about rooms, packages and
-        vehicles is a click away, or call the trust and we will help.
+        vehicles is a click away, or call us and we will help.
       </p>
       <div className="mt-9 flex flex-wrap gap-3">
         <Button href="/">Back to the start</Button>

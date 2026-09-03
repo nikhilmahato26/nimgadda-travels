@@ -4,7 +4,7 @@ import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
 /*
   Most bookings here start with a phone call, often made by someone's son or
-  daughter on a small screen. On mobile the two ways to reach the trust stay
+  daughter on a small screen. On mobile the two ways to reach us stay
   pinned to the bottom of the viewport rather than making people scroll for
   them. Hidden on desktop, where the header already carries the number.
 */

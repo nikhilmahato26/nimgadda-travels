@@ -10,7 +10,7 @@ export default function FaqSection() {
         <Reveal><div className="max-w-2xl">
           <TwoTone lead="Questions" trail="we get asked" />
           <p className="mt-4 text-[16px] leading-relaxed text-muted">
-            If the answer you need is not here, the trust answers the phone
+            If the answer you need is not here, we answer the phone
             directly.
           </p>
         </div></Reveal>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { business } from "@/data/business";
 
 /*
   Drop-in replacement for a plain <Image fill>: give it a `relative`,
@@ -37,7 +38,7 @@ export default function RoomGallery({ images, name, sizes, priority = false }) {
     return (
       <Image
         src={images[0]}
-        alt={`${name} at Nimmagadda Vari Charitable Trust`}
+        alt={`${name} at ${business.name}`}
         fill
         priority={priority}
         sizes={sizes}
@@ -55,7 +56,7 @@ export default function RoomGallery({ images, name, sizes, priority = false }) {
         <Image
           key={src}
           src={src}
-          alt={`${name} at Nimmagadda Vari Charitable Trust, photo ${i + 1} of ${images.length}`}
+          alt={`${name} at ${business.name}, photo ${i + 1} of ${images.length}`}
           fill
           priority={priority && i === 0}
           sizes={sizes}

@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: room.name,
-    description: `${room.summary} At Nimmagadda Vari Charitable Trust, Panday Haweli, Varanasi.`,
+    description: `${room.summary} At Nimmagadda Vari Andhra Tours and Travels, Panday Haweli, Varanasi.`,
   };
 }
 

@@ -1,7 +1,7 @@
-// The trust's vehicles, one entry per vehicle, ordered by how many people it
+// The business's vehicles, one entry per vehicle, ordered by how many people it
 // seats. Families pick by group size, so `seats` leads on every card.
 //
-// The photographs are stock images of each vehicle type, not the trust's own
+// The photographs are stock images of each vehicle type, not the business's own
 // vehicles. Replace them with real photographs of the fleet when the client
 // sends them: keep the same file names and nothing else has to change.
 //

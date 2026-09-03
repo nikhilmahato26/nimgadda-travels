@@ -171,8 +171,8 @@ export default async function PackageDetailPage({ params }) {
                 ) : (
                   <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-muted">
                     The route is set with you when you book, around the days
-                    you have and the darshans your family wants. Call the
-                    trust and we will walk you through it.
+                    you have and the darshans your family wants. Call us and
+                    we will walk you through it.
                   </p>
                 )}
               </div>

@@ -7,7 +7,7 @@ import { business } from "@/data/business";
 /*
   The sticky sidebar the reference hotel template fills with a nightly rate,
   a date picker and a "Continue" button that starts a payment flow. None of
-  that exists here: the trust has never quoted a nightly rate (only per
+  that exists here: we have never quoted a nightly rate (only per
   person package prices), and there is no online payment step at all. So
   this keeps the shape (dates, guest count, one primary action) but the
   action composes a WhatsApp message instead of a fake checkout, which is

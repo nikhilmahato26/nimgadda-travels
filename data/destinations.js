@@ -1,5 +1,5 @@
-// Places the trust takes pilgrims to. Every entry has real photography, so the
-// rail never renders a blank tile.
+// Places pilgrims are taken to on the yatra. Every entry has real
+// photography, so the rail never renders a blank tile.
 
 export const destinations = [
   {

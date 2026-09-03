@@ -1,7 +1,7 @@
 // Guest reviews.
 //
 // Deliberately empty. The reference design has a testimonial section, but the
-// trust has not supplied any real guest quotes and inventing them for a real
+// client has not supplied any real guest quotes and inventing them for a real
 // business would be dishonest. The section reads this array and does not
 // render at all while it is empty, so the page has no hole in it.
 //

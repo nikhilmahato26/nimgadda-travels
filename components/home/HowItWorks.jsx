@@ -26,7 +26,7 @@ const steps = [
   },
   {
     title: "Someone is here the whole time",
-    body: "The trust runs the rooms, the kitchen and the fleet, so if something needs changing mid trip you are talking to the people who can change it.",
+    body: "We run the rooms, the kitchen and the fleet, so if something needs changing mid trip you are talking to the people who can change it.",
   },
 ];
 

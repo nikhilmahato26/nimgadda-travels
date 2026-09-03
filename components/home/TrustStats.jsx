@@ -3,7 +3,7 @@ import Reveal from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 
 /*
-  The reference fills this row with growth metrics. A charitable trust has no
+  The reference fills this row with growth metrics. A small family-run travel business has no
   such numbers and inventing them would be a lie on a real business's website,
   so these four tiles carry facts that are true and checkable against the rest
   of the site. One tile is filled with the accent, as in the reference.
@@ -28,7 +28,7 @@ export default function TrustStats({ rooms, vehicles, packages, destinations }) 
     <Section>
       <Container>
         <Reveal><div className="grid gap-6 lg:grid-cols-[1fr_minmax(0,26rem)] lg:items-end">
-          <TwoTone lead="Get to know more" trail="about the trust" />
+          <TwoTone lead="Get to know more" trail="about us" />
           <p className="text-[15px] leading-relaxed text-muted lg:text-right">
             Rooms, a kitchen and a fleet under one roof, so one phone call
             settles the whole trip.

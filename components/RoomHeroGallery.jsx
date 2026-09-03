@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { business } from "@/data/business";
 
 /*
   The room page's main gallery: one big photo with a row of thumbnails below
@@ -33,7 +34,7 @@ export default function RoomHeroGallery({ images, name }) {
       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-card border border-line bg-surface-2">
         <Image
           src={images[index]}
-          alt={`${name} at Nimmagadda Vari Charitable Trust, photo ${index + 1} of ${images.length}`}
+          alt={`${name} at ${business.name}, photo ${index + 1} of ${images.length}`}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 62vw"

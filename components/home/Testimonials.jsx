@@ -5,7 +5,7 @@ import Reveal from "@/components/ui/Reveal";
 import { testimonials } from "@/data/testimonials";
 
 /*
-  Renders nothing while data/testimonials.js is empty. The trust has not given
+  Renders nothing while data/testimonials.js is empty. We have not been given
   us real guest quotes and writing fictional ones for a real business is not
   something to ship, so the section stays off until it has something true to
   show. Add an entry to that file and it appears here.

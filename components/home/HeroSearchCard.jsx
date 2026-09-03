@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 /*
   The reference puts a property-search card in the hero. A search box that
   searches nothing would be a fake control, so this one composes a WhatsApp
-  message from what you pick and opens a chat with the trust. That is how most
+  message from what you pick and opens a chat with us. That is how most
   enquiries here actually arrive, and the button does exactly what it says.
 */
 

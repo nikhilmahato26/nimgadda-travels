@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-// Generated favicon: the NV monogram in the trust's navy and gold. Replace
+// Generated favicon: the NV monogram in the business's navy and gold. Replace
 // this file with an icon.png if the client supplies their seal artwork.
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";

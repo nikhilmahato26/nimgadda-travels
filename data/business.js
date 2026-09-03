@@ -1,16 +1,22 @@
-// Single source of truth for the trust's identity and contact details.
+// Single source of truth for the business's identity and contact details.
 // Every value here comes from the client. Seeded into SiteSetting when a
 // DATABASE_URL is configured (see prisma/seed.js).
+//
+// This is a private travel business, not the family's charitable trust
+// (a separate entity) - the client asked explicitly that the trust's name
+// not appear here. "Proprietor" is our own default for the owner's role
+// since the client didn't specify one; change it if there's a preferred
+// title (Managing Partner, Owner, and so on).
 
 export const business = {
-  name: "Nimmagadda Vari Charitable Trust",
+  name: "Nimmagadda Vari Andhra Tours and Travels",
   shortName: "Nimmagadda Vari",
   tagline: "Deluxe rooms and travels in Kasi, with Andhra food",
   circuit: ["Kasi", "Tirupathi", "Arunachalam"],
 
-  trustee: {
+  owner: {
     name: "T. N. Venkata Krishna",
-    role: "Trust Member",
+    role: "Proprietor",
   },
 
   phoneDisplay: "+91 72079 35649",

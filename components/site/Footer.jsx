@@ -6,8 +6,8 @@ import { BrandLockup } from "./BrandMark";
 
 /*
   Light footer, as in the reference. Its newsletter box is replaced with the
-  two ways this trust is actually reached, because a subscribe field that
-  collects addresses nobody sends to would be a dead control.
+  two ways we are actually reached, because a subscribe field that collects
+  addresses nobody sends to would be a dead control.
 */
 
 export default function Footer() {
@@ -43,8 +43,8 @@ export default function Footer() {
           <div>
             <BrandLockup />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
-              Rooms, meals and travels for pilgrims in Kasi, looked after by the
-              trust. Serving the Kasi, Tirupathi and Arunachalam circuit.
+              Rooms, meals and travels for pilgrims in Kasi, run by one
+              family. Serving the Kasi, Tirupathi and Arunachalam circuit.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -52,7 +52,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 rounded-pill bg-accent px-5 py-2.5 text-[14px] font-bold text-on-accent transition-all hover:brightness-95"
               >
                 <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
-                Call the trust
+                Call us
               </a>
               <a
                 href={whatsappLink(whatsappMessages.general)}
@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-12 border-t border-line pt-6 text-[13px] text-muted">
-          {business.name}. {business.trustee.role}: {business.trustee.name}.
+          {business.name}. {business.owner.role}: {business.owner.name}.
         </p>
       </div>
     </footer>

@@ -18,19 +18,18 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nimmagaddavari.in"
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "Nimmagadda Vari Charitable Trust | Rooms and yatra packages in Kasi",
-    template: "%s | Nimmagadda Vari Charitable Trust",
+    default: `${business.name} | Rooms and yatra packages in Kasi`,
+    template: `%s | ${business.name}`,
   },
   description:
-    "Air-conditioned deluxe rooms close to Kashi Vishwanath, Andhra meals, and yatra packages across Prayagraj, Ayodhya, Gaya, Mathura and Agra. Run by a charitable trust in Varanasi.",
+    "Air-conditioned deluxe rooms close to Kashi Vishwanath, Andhra meals, and yatra packages across Prayagraj, Ayodhya, Gaya, Mathura and Agra. Run by an Andhra family in Varanasi.",
   keywords: [
     "Kasi rooms",
     "Varanasi accommodation Telugu",
     "Kashi Vishwanath stay",
     "Andhra food Varanasi",
     "Kasi yatra package",
-    "Nimmagadda Vari Charitable Trust",
+    business.name,
   ],
   openGraph: {
     type: "website",

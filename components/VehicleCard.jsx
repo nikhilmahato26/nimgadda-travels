@@ -5,7 +5,7 @@ import { business } from "@/data/business";
 
 /*
   One card per vehicle. Where a photograph exists it fills a 4:3 frame; where
-  the trust has not sent one yet the frame carries the vehicle name instead of
+  the business has not sent one yet the frame carries the vehicle name instead of
   a broken tile, matching how the room cards behave.
 */
 
