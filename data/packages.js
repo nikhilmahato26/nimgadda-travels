@@ -11,7 +11,7 @@
 // it lives here once rather than repeated on each object below. Shown on
 // every package card, the detail page's meta row and quick facts, and sets
 // the min/max on the traveller count field in PackageBookingCard.
-export const packageGroupSize = { min: 20, max: 200 };
+export const packageGroupSize = { min: 4, max: 150 };
 
 export const packages = [
   {
