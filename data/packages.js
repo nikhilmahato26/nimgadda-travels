@@ -8,10 +8,10 @@
 // Replace the nulls once the client confirms, and the pages fill themselves in.
 
 // The same group size applies to every package, not a per-package figure, so
-// it lives here once rather than repeated on each object below. Shown on the
-// package detail page's meta row and quick facts, and sets the min/max on the
-// traveller count field in PackageBookingCard.
-export const packageGroupSize = { min: 4, max: 20 };
+// it lives here once rather than repeated on each object below. Shown on
+// every package card, the detail page's meta row and quick facts, and sets
+// the min/max on the traveller count field in PackageBookingCard.
+export const packageGroupSize = { min: 20, max: 200 };
 
 export const packages = [
   {

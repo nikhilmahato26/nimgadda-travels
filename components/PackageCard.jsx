@@ -2,10 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { rupees } from "@/lib/utils";
+import { packageGroupSize } from "@/data/packages";
 
 // Where a detail has not been confirmed we say so, rather than printing a
 // duration or a route that nobody promised.
 const UNCONFIRMED = "Duration confirmed when you book";
+
+// One line, one middle-dot: duration next to the group size every package
+// shares, so the card states it without adding a row.
+function DurationLine({ pkg, className }) {
+  return (
+    <p className={className}>
+      {pkg.duration ?? UNCONFIRMED} · {packageGroupSize.min}-
+      {packageGroupSize.max} travellers
+    </p>
+  );
+}
 
 export function PackagePrice({ amount, className = "" }) {
   return (
@@ -36,9 +48,7 @@ export function FeaturedPackageCard({ pkg }) {
         <h3 className="font-display text-2xl font-extrabold tracking-tight lg:text-3xl">
           {pkg.name}
         </h3>
-        <p className="mt-1 text-[14px] font-medium text-muted">
-          {pkg.duration ?? UNCONFIRMED}
-        </p>
+        <DurationLine pkg={pkg} className="mt-1 text-[14px] font-medium text-muted" />
 
         <p className="mt-4 text-[16px] leading-relaxed text-muted">
           {pkg.summary}
@@ -93,9 +103,7 @@ export function PackageCard({ pkg }) {
         <h3 className="font-display text-xl font-extrabold tracking-tight">
           {pkg.name}
         </h3>
-        <p className="mt-1 text-[14px] font-medium text-muted">
-          {pkg.duration ?? UNCONFIRMED}
-        </p>
+        <DurationLine pkg={pkg} className="mt-1 text-[14px] font-medium text-muted" />
 
         <p className="mt-3 text-[15px] leading-relaxed text-muted">
           {pkg.summary}
