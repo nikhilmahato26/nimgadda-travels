@@ -24,6 +24,7 @@ import EnquiryForm from "@/components/EnquiryForm";
 import Reveal from "@/components/ui/Reveal";
 import { getRooms, getRoomBySlug } from "@/lib/content";
 import { neighbourhood, roomPolicies } from "@/data/rooms";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 const amenityIcons = {
   "Air conditioning": Wind,
@@ -111,11 +112,11 @@ export default async function RoomDetailPage({ params }) {
           name,
           value: true,
         })),
-        photo: room.gallery?.map((img) => `https://nimmagaddavari.in${img}`),
+        photo: room.gallery?.map((img) => absoluteUrl(img)),
         provider: {
           "@type": "LodgingBusiness",
           name: "Nimmagadda Vari Andhra Tours and Travels",
-          url: "https://nimmagaddavari.in",
+          url: SITE_URL,
         },
       },
       {
@@ -125,19 +126,19 @@ export default async function RoomDetailPage({ params }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://nimmagaddavari.in",
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Rooms",
-            item: "https://nimmagaddavari.in/rooms",
+            item: absoluteUrl("/rooms"),
           },
           {
             "@type": "ListItem",
             position: 3,
             name: room.name,
-            item: `https://nimmagaddavari.in/rooms/${room.slug}`,
+            item: absoluteUrl(`/rooms/${room.slug}`),
           },
         ],
       },

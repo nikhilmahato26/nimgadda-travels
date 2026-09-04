@@ -4,16 +4,13 @@ import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import CallBar from "@/components/site/CallBar";
 import { business, addressOneLine } from "@/data/business";
+import { SITE_URL } from "@/lib/site";
 
-// Single family, weight contrast carries the two-tone headings the reference
-// uses ("Popular" bold beside "destination" light).
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nimmagaddavari.in";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),

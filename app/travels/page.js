@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import EnquiryForm from "@/components/EnquiryForm";
 import { getVehicles } from "@/lib/content";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "Vehicle Hire & Fleet in Kasi | Dzire, Innova, Urbania, Tempo Traveller & Bus",
@@ -46,7 +47,7 @@ export default async function TravelsPage() {
     name: "Nimmagadda Vari Fleet & Travels",
     description:
       "Vehicle fleet hire in Varanasi for pilgrimage circuits across Kasi, Prayagraj, Ayodhya, and Gaya.",
-    url: "https://nimmagaddavari.in/travels",
+    url: absoluteUrl("/travels"),
     provider: {
       "@type": "TravelAgency",
       name: "Nimmagadda Vari Andhra Tours and Travels",
@@ -60,7 +61,7 @@ export default async function TravelsPage() {
           "@type": "Vehicle",
           name: v.name,
           description: `${v.seats} seats. ${v.blurb}`,
-          image: v.image ? `https://nimmagaddavari.in${v.image}` : undefined,
+          image: v.image ? absoluteUrl(v.image) : undefined,
         },
       })),
     },

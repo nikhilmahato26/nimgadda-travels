@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { business, addressLines } from "@/data/business";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "About Us | Nimmagadda Vari Andhra Tours & Travels in Kasi",
@@ -42,7 +43,7 @@ export default function AboutPage() {
       {
         "@type": "AboutPage",
         name: "About Nimmagadda Vari Andhra Tours and Travels",
-        url: "https://nimmagaddavari.in/about",
+        url: absoluteUrl("/about"),
         description:
           "Nimmagadda Vari Andhra Tours and Travels runs rooms, a kitchen and a fleet of vehicles in Varanasi for Telugu families on the Kasi, Tirupathi and Arunachalam circuit.",
         mainEntity: {
@@ -66,13 +67,13 @@ export default function AboutPage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://nimmagaddavari.in",
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "About Us",
-            item: "https://nimmagaddavari.in/about",
+            item: absoluteUrl("/about"),
           },
         ],
       },

@@ -20,6 +20,7 @@ import Reveal from "@/components/ui/Reveal";
 import { getPackages, getPackageBySlug } from "@/lib/content";
 import { packageGroupSize } from "@/data/packages";
 import { rupees } from "@/lib/utils";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 const UNCONFIRMED_DURATION = "Duration confirmed when you book";
 
@@ -97,13 +98,13 @@ export default async function PackageDetailPage({ params }) {
         "@type": ["TouristTrip", "Product"],
         name: pkg.name,
         description: pkg.summary,
-        image: pkg.image ? `https://nimmagaddavari.in${pkg.image}` : undefined,
+        image: pkg.image ? absoluteUrl(pkg.image) : undefined,
         offers: {
           "@type": "Offer",
           price: pkg.pricePerPerson,
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
-          url: `https://nimmagaddavari.in/packages/${pkg.slug}`,
+          url: absoluteUrl(`/packages/${pkg.slug}`),
           seller: {
             "@type": "TravelAgency",
             name: "Nimmagadda Vari Andhra Tours and Travels",
@@ -122,7 +123,7 @@ export default async function PackageDetailPage({ params }) {
         provider: {
           "@type": "TravelAgency",
           name: "Nimmagadda Vari Andhra Tours and Travels",
-          url: "https://nimmagaddavari.in",
+          url: SITE_URL,
         },
       },
       {
@@ -132,19 +133,19 @@ export default async function PackageDetailPage({ params }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://nimmagaddavari.in",
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Packages",
-            item: "https://nimmagaddavari.in/packages",
+            item: absoluteUrl("/packages"),
           },
           {
             "@type": "ListItem",
             position: 3,
             name: pkg.name,
-            item: `https://nimmagaddavari.in/packages/${pkg.slug}`,
+            item: absoluteUrl(`/packages/${pkg.slug}`),
           },
         ],
       },

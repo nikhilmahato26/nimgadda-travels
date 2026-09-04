@@ -4,6 +4,7 @@ import { FeaturedPackageCard, PackageCard } from "@/components/PackageCard";
 import Reveal from "@/components/ui/Reveal";
 import EnquiryForm from "@/components/EnquiryForm";
 import { getPackages } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "Kasi Yatra Packages | Prayagraj, Ayodhya, Gaya, Mathura & Agra Tours",
@@ -47,8 +48,8 @@ export default async function PackagesPage() {
       position: index + 1,
       name: pkg.name,
       description: pkg.summary,
-      url: `https://nimmagaddavari.in/packages/${pkg.slug}`,
-      image: pkg.image ? `https://nimmagaddavari.in${pkg.image}` : undefined,
+      url: absoluteUrl(`/packages/${pkg.slug}`),
+      image: pkg.image ? absoluteUrl(pkg.image) : undefined,
     })),
   };
 

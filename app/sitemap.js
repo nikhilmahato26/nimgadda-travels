@@ -1,6 +1,5 @@
 import { getPackages, getRooms } from "@/lib/content";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nimmagaddavari.in";
+import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap() {
   const [packages, rooms] = await Promise.all([getPackages(), getRooms()]);

@@ -18,6 +18,7 @@ import EnquiryForm from "@/components/EnquiryForm";
 import { getRooms } from "@/lib/content";
 import { roomAmenities, stayHighlights } from "@/data/rooms";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "AC Rooms & Deluxe Accommodation in Kasi (Varanasi)",
@@ -69,8 +70,8 @@ export default async function RoomsPage() {
       position: index + 1,
       name: room.name,
       description: room.summary,
-      url: `https://nimmagaddavari.in/rooms/${room.slug}`,
-      image: room.gallery?.[0] ? `https://nimmagaddavari.in${room.gallery[0]}` : undefined,
+      url: absoluteUrl(`/rooms/${room.slug}`),
+      image: room.gallery?.[0] ? absoluteUrl(room.gallery[0]) : undefined,
     })),
   };
 

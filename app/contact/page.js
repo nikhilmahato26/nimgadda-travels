@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/ui/Section";
 import EnquiryForm from "@/components/EnquiryForm";
 import { business, addressLines } from "@/data/business";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "Contact Us | Nimmagadda Vari Varanasi",
@@ -70,7 +71,7 @@ export default function ContactPage() {
       {
         "@type": "ContactPage",
         name: "Contact Nimmagadda Vari Andhra Tours and Travels",
-        url: "https://nimmagaddavari.in/contact",
+        url: absoluteUrl("/contact"),
         mainEntity: {
           "@type": "LodgingBusiness",
           name: business.name,
@@ -92,13 +93,13 @@ export default function ContactPage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://nimmagaddavari.in",
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Contact",
-            item: "https://nimmagaddavari.in/contact",
+            item: absoluteUrl("/contact"),
           },
         ],
       },
