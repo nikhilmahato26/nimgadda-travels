@@ -25,7 +25,7 @@ export default function Navbar() {
       className={cn(
         "z-40 w-full",
         overHero
-          ? "absolute inset-x-0 top-0"
+          ? "absolute inset-x-0 top-3 sm:top-5"
           : "sticky top-0 border-b border-line bg-surface/90 backdrop-blur-md"
       )}
     >

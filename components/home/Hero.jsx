@@ -12,7 +12,7 @@ import { business } from "@/data/business";
 
 export default function Hero() {
   return (
-    <section className="px-3 pt-2 sm:px-5">
+    <section className="px-3 pt-3 sm:px-5 sm:pt-4">
       <div className="relative isolate overflow-hidden rounded-card">
         <Image
           src="/images/kashi-temple.jpg"
@@ -32,7 +32,7 @@ export default function Hero() {
           className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(17_19_24/0.28),rgb(17_19_24/0.52)_45%,rgb(17_19_24/0.72))]"
         />
 
-        <div className="mx-auto flex min-h-[42rem] w-full max-w-7xl flex-col justify-end px-5 pb-6 pt-28 sm:px-8 lg:min-h-[46rem] lg:pt-24">
+        <div className="mx-auto flex min-h-[42rem] w-full max-w-7xl flex-col justify-end px-5 pb-6 pt-32 sm:px-8 lg:min-h-[46rem] lg:pt-28">
           <div className="mx-auto max-w-3xl text-center">
             <div className="flex flex-wrap items-center justify-center gap-3">
               <span className="enter inline-flex items-center rounded-pill bg-white/15 px-4 py-2 text-[14px] font-semibold text-white backdrop-blur-sm">
