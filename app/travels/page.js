@@ -8,16 +8,70 @@ import { getVehicles } from "@/lib/content";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
 export const metadata = {
-  title: "Travels and vehicles",
+  title: "Vehicle Hire & Fleet in Kasi | Dzire, Innova, Urbania, Tempo Traveller & Bus",
   description:
-    "Cars, tempo travellers and buses for pilgrims in Kasi. Dzire, Tavera, Ertiga, Innova Crysta, Wings, Cruiser, Urbania, Maharaja, Tempo Traveller and a 49 seat glass pack bus.",
+    "Private vehicle fleet hire in Varanasi for pilgrimage trips across Kasi, Prayagraj, Ayodhya, and Gaya. Sedans, 7-seater SUVs, luxury Tempo Travellers, and 49-seater buses.",
+  alternates: {
+    canonical: "/travels",
+  },
+  openGraph: {
+    title: "Vehicle Hire & Fleet in Kasi | Nimmagadda Vari",
+    description:
+      "Reliable cars, tempo travellers and buses for pilgrims in Varanasi. Dedicated Andhra drivers who know the northern pilgrimage circuit.",
+    url: "/travels",
+    images: [
+      {
+        url: "/images/fleet-traveller.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pilgrim vehicle fleet in Varanasi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vehicle Hire & Fleet in Kasi | Nimmagadda Vari",
+    description:
+      "Sedans, 7-seater SUVs, Tempo Travellers, and buses for Kasi, Prayagraj, Ayodhya, and Gaya trips.",
+    images: ["/images/fleet-traveller.jpg"],
+  },
 };
 
 export default async function TravelsPage() {
   const vehicles = await getVehicles();
 
+  const fleetSchema = {
+    "@context": "https://schema.org",
+    "@type": "AutoRental",
+    name: "Nimmagadda Vari Fleet & Travels",
+    description:
+      "Vehicle fleet hire in Varanasi for pilgrimage circuits across Kasi, Prayagraj, Ayodhya, and Gaya.",
+    url: "https://nimmagaddavari.in/travels",
+    provider: {
+      "@type": "TravelAgency",
+      name: "Nimmagadda Vari Andhra Tours and Travels",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Pilgrim Vehicles",
+      itemListElement: vehicles.map((v) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Vehicle",
+          name: v.name,
+          description: `${v.seats} seats. ${v.blurb}`,
+          image: v.image ? `https://nimmagaddavari.in${v.image}` : undefined,
+        },
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(fleetSchema) }}
+      />
       <PageHeader
         title={"Vehicles for four people or forty nine"}
         intro="Our own fleet, driven by people who know the roads between Kasi, Prayagraj, Ayodhya and Gaya. Pick by how many are travelling."

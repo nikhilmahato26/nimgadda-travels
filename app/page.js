@@ -15,6 +15,14 @@ import {
   getVehicles,
   getDestinations,
 } from "@/lib/content";
+import { faqs } from "@/data/faqs";
+
+export const metadata = {
+  title: "Nimmagadda Vari Andhra Tours and Travels | Rooms & Yatra Packages in Kasi",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default async function HomePage() {
   const [rooms, packages, vehicles, destinations] = await Promise.all([
@@ -24,8 +32,25 @@ export default async function HomePage() {
     getDestinations(),
   ]);
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <Hero />
       <PackagesSection packages={packages} />
       <StaySection rooms={rooms} />
@@ -45,3 +70,4 @@ export default async function HomePage() {
     </>
   );
 }
+

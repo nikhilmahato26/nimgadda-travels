@@ -6,17 +6,58 @@ import EnquiryForm from "@/components/EnquiryForm";
 import { getPackages } from "@/lib/content";
 
 export const metadata = {
-  title: "Yatra packages",
+  title: "Kasi Yatra Packages | Prayagraj, Ayodhya, Gaya, Mathura & Agra Tours",
   description:
-    "Yatra packages from Kasi covering Prayagraj, Ayodhya, Naimisaranyam, Gaya, Mathura and Agra. Twin sharing air-conditioned rooms, Andhra meals and all taxes included.",
+    "Complete Kasi yatra tour packages from Varanasi covering Prayagraj, Ayodhya, Naimisaranyam, Gaya, Mathura and Agra. AC rooms, Andhra meals, and vehicle transport included.",
+  alternates: {
+    canonical: "/packages",
+  },
+  openGraph: {
+    title: "Kasi Yatra Packages | Nimmagadda Vari Varanasi",
+    description:
+      "All-inclusive pilgrimage packages with AC twin-sharing rooms, authentic Andhra meals, and vehicle transport across Prayagraj, Ayodhya, Gaya, Mathura and Agra.",
+    url: "/packages",
+    images: [
+      {
+        url: "/images/prayagraj.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kasi Yatra Pilgrimage Tour Packages",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kasi Yatra Packages | Nimmagadda Vari Varanasi",
+    description:
+      "All-inclusive Kasi yatra tour packages with AC rooms, Andhra meals and vehicle transport.",
+    images: ["/images/prayagraj.jpg"],
+  },
 };
 
 export default async function PackagesPage() {
   const packages = await getPackages();
   const [featured, ...rest] = packages;
 
+  const packageListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: packages.map((pkg, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: pkg.name,
+      description: pkg.summary,
+      url: `https://nimmagaddavari.in/packages/${pkg.slug}`,
+      image: pkg.image ? `https://nimmagaddavari.in${pkg.image}` : undefined,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(packageListSchema) }}
+      />
       <PageHeader
         title="Yatra packages from Kasi"
         intro="Rooms, meals and travel arranged end to end. Prices are per person and include all taxes. Special darshan tickets are arranged separately."

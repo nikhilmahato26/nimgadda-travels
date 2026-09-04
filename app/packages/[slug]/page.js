@@ -34,9 +34,33 @@ export async function generateMetadata({ params }) {
   const pkg = await getPackageBySlug(slug);
   if (!pkg) return { title: "Package not found" };
 
+  const ogImage = pkg.image || "/images/prayagraj.jpg";
+
   return {
-    title: pkg.name,
-    description: `${pkg.summary} ${rupees(pkg.pricePerPerson)} per person, all taxes included.`,
+    title: `${pkg.name} | Kasi Yatra Pilgrimage Package`,
+    description: `${pkg.summary} Price: ${rupees(pkg.pricePerPerson)} per person with AC rooms, authentic Andhra meals, and vehicle transport included.`,
+    alternates: {
+      canonical: `/packages/${pkg.slug}`,
+    },
+    openGraph: {
+      title: `${pkg.name} | Nimmagadda Vari Yatra Packages`,
+      description: `${pkg.summary} Includes AC accommodation, Andhra meals, and transfers. All taxes included.`,
+      url: `/packages/${pkg.slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${pkg.name} - ${pkg.imageAlt || "Kasi Yatra"}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${pkg.name} | Kasi Yatra Package`,
+      description: `${pkg.summary} ${rupees(pkg.pricePerPerson)} per person.`,
+      images: [ogImage],
+    },
   };
 }
 
@@ -66,8 +90,73 @@ export default async function PackageDetailPage({ params }) {
     },
   ];
 
+  const packageStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["TouristTrip", "Product"],
+        name: pkg.name,
+        description: pkg.summary,
+        image: pkg.image ? `https://nimmagaddavari.in${pkg.image}` : undefined,
+        offers: {
+          "@type": "Offer",
+          price: pkg.pricePerPerson,
+          priceCurrency: "INR",
+          availability: "https://schema.org/InStock",
+          url: `https://nimmagaddavari.in/packages/${pkg.slug}`,
+          seller: {
+            "@type": "TravelAgency",
+            name: "Nimmagadda Vari Andhra Tours and Travels",
+          },
+        },
+        itinerary: pkg.places
+          ? {
+              "@type": "ItemList",
+              itemListElement: pkg.places.map((place, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: place,
+              })),
+            }
+          : undefined,
+        provider: {
+          "@type": "TravelAgency",
+          name: "Nimmagadda Vari Andhra Tours and Travels",
+          url: "https://nimmagaddavari.in",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://nimmagaddavari.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Packages",
+            item: "https://nimmagaddavari.in/packages",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: pkg.name,
+            item: `https://nimmagaddavari.in/packages/${pkg.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(packageStructuredData) }}
+      />
       <Section className="pb-0">
         <Container>
           <Link

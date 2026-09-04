@@ -16,15 +16,15 @@ export function BrandMark({ className }) {
   return (
     <span
       className={cn(
-        "flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ink shadow-xs",
+        "flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ink shadow-xs",
         className
       )}
     >
       <Image
         src="/images/logo-mark-transparent.png"
         alt="Nimmagadda Vari Andhra Tours and Travels emblem"
-        width={40}
-        height={40}
+        width={48}
+        height={48}
         className="h-full w-full object-cover"
         priority
       />
@@ -34,13 +34,13 @@ export function BrandMark({ className }) {
 
 export function BrandLockup({ className }) {
   return (
-    <span className={cn("flex items-center gap-2.5", className)}>
+    <span className={cn("flex items-center gap-3", className)}>
       <BrandMark />
       <span className="leading-tight">
-        <span className="block font-display text-[15px] font-extrabold tracking-tight text-text">
+        <span className="block font-display text-[16.5px] font-extrabold tracking-tight text-text">
           Nimmagadda Vari
         </span>
-        <span className="block text-[11px] font-medium text-muted">
+        <span className="block text-[12px] font-medium text-muted">
           Andhra Tours &amp; Travels
         </span>
       </span>

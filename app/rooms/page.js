@@ -20,9 +20,33 @@ import { roomAmenities, stayHighlights } from "@/data/rooms";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
 export const metadata = {
-  title: "Rooms",
+  title: "AC Rooms & Deluxe Accommodation in Kasi (Varanasi)",
   description:
-    "Three room categories in Panday Haweli, Varanasi, a walk from Kashi Vishwanath: AC, Deluxe and Super Deluxe. Lift, car parking, hot water, Wi-Fi and LED televisions.",
+    "AC, Deluxe and Super Deluxe rooms in Panday Haweli, Varanasi, a short walk from Kashi Vishwanath temple. Lift access, car parking, hot water, Wi-Fi, and authentic Andhra meals.",
+  alternates: {
+    canonical: "/rooms",
+  },
+  openGraph: {
+    title: "AC Rooms & Deluxe Accommodation in Kasi | Nimmagadda Vari",
+    description:
+      "Comfortable air-conditioned rooms near Kashi Vishwanath temple with lift, hot water, Wi-Fi, parking, and home-style Andhra meals.",
+    url: "/rooms",
+    images: [
+      {
+        url: "/images/room-super-deluxe-1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Deluxe Rooms in Varanasi near Kashi Vishwanath",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AC Rooms & Accommodation in Kasi | Nimmagadda Vari",
+    description:
+      "AC, Deluxe and Super Deluxe rooms in Panday Haweli, Varanasi. Walking distance to Kashi Vishwanath.",
+    images: ["/images/room-super-deluxe-1.jpg"],
+  },
 };
 
 const amenityIcons = {
@@ -37,8 +61,25 @@ const amenityIcons = {
 export default async function RoomsPage() {
   const rooms = await getRooms();
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: rooms.map((room, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: room.name,
+      description: room.summary,
+      url: `https://nimmagaddavari.in/rooms/${room.slug}`,
+      image: room.gallery?.[0] ? `https://nimmagaddavari.in${room.gallery[0]}` : undefined,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <PageHeader
         title="Three room categories in the old city"
         intro="AC, Deluxe and Super Deluxe. Every one of them is air-conditioned, has lift access and car parking, and is close enough to Kashi Vishwanath to walk."

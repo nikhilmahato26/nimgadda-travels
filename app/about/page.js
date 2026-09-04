@@ -6,14 +6,85 @@ import Reveal from "@/components/ui/Reveal";
 import { business, addressLines } from "@/data/business";
 
 export const metadata = {
-  title: "About us",
+  title: "About Us | Nimmagadda Vari Andhra Tours & Travels in Kasi",
   description:
-    "Nimmagadda Vari Andhra Tours and Travels looks after Telugu pilgrims in Kasi with rooms, Andhra meals and vehicles, on the Kasi, Tirupathi and Arunachalam circuit.",
+    "Learn about Nimmagadda Vari Andhra Tours and Travels in Varanasi. Providing Telugu pilgrims with rooms near Kashi Vishwanath, home-style Andhra meals, and dedicated travel services.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Nimmagadda Vari Andhra Tours & Travels",
+    description:
+      "A trusted family-run business looking after pilgrims in Varanasi with AC accommodation, Andhra meals, and complete yatra circuits.",
+    url: "/about",
+    images: [
+      {
+        url: "/images/ghats-pilgrims.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pilgrims on the ghats in Varanasi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Nimmagadda Vari Varanasi",
+    description:
+      "Dedicated to serving Telugu pilgrims with rooms, home-style Andhra meals, and travels in Kasi.",
+    images: ["/images/ghats-pilgrims.jpg"],
+  },
 };
 
 export default function AboutPage() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        name: "About Nimmagadda Vari Andhra Tours and Travels",
+        url: "https://nimmagaddavari.in/about",
+        description:
+          "Nimmagadda Vari Andhra Tours and Travels runs rooms, a kitchen and a fleet of vehicles in Varanasi for Telugu families on the Kasi, Tirupathi and Arunachalam circuit.",
+        mainEntity: {
+          "@type": "LodgingBusiness",
+          name: business.name,
+          telephone: business.phoneDisplay,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: `${business.address.line1}, ${business.address.line2}`,
+            addressLocality: "Varanasi",
+            addressRegion: "Uttar Pradesh",
+            postalCode: business.address.pincode,
+            addressCountry: "IN",
+          },
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://nimmagaddavari.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Us",
+            item: "https://nimmagaddavari.in/about",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       <PageHeader
         title="A family business looking after pilgrims in Kasi"
         intro="Nimmagadda Vari Andhra Tours and Travels runs rooms, a kitchen and a fleet of vehicles in Varanasi, mainly for Telugu families making the Kasi, Tirupathi and Arunachalam yatra."

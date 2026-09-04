@@ -6,9 +6,33 @@ import { business, addressLines } from "@/data/business";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
 export const metadata = {
-  title: "Contact",
+  title: "Contact Us | Nimmagadda Vari Varanasi",
   description:
-    "Call or message Nimmagadda Vari Andhra Tours and Travels in Panday Haweli, Varanasi 221001, for rooms, yatra packages and vehicles in Kasi.",
+    "Call +91 72079 35649 or message Nimmagadda Vari Andhra Tours and Travels in Panday Haweli, Varanasi. Rooms, yatra packages, meals, and railway station pickup.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us | Nimmagadda Vari Varanasi",
+    description:
+      "Get in touch for room availability, yatra package details, and vehicle bookings in Kasi. Quick assistance for pilgrims.",
+    url: "/contact",
+    images: [
+      {
+        url: "/images/kashi-temple.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Nimmagadda Vari",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Nimmagadda Vari Varanasi",
+    description:
+      "Direct call and WhatsApp contact for rooms, Andhra meals and yatra bookings in Varanasi.",
+    images: ["/images/kashi-temple.jpg"],
+  },
 };
 
 export default function ContactPage() {
@@ -40,8 +64,53 @@ export default function ContactPage() {
     },
   ];
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        name: "Contact Nimmagadda Vari Andhra Tours and Travels",
+        url: "https://nimmagaddavari.in/contact",
+        mainEntity: {
+          "@type": "LodgingBusiness",
+          name: business.name,
+          telephone: business.phoneDisplay,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: `${business.address.line1}, ${business.address.line2}`,
+            addressLocality: "Varanasi",
+            addressRegion: "Uttar Pradesh",
+            postalCode: business.address.pincode,
+            addressCountry: "IN",
+          },
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://nimmagaddavari.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact",
+            item: "https://nimmagaddavari.in/contact",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
       <PageHeader
         title="Talk to us"
         intro="The quickest way is a phone call. If you would rather write, leave your number below and we will call you back."

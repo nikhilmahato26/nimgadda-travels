@@ -18,59 +18,162 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nimmagaddavari.in"
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${business.name} | Rooms and yatra packages in Kasi`,
+    default: `${business.name} | Rooms & Yatra Packages in Kasi`,
     template: `%s | ${business.name}`,
   },
   description:
-    "Air-conditioned deluxe rooms close to Kashi Vishwanath, Andhra meals, and yatra packages across Prayagraj, Ayodhya, Gaya, Mathura and Agra. Run by an Andhra family in Varanasi.",
+    "Air-conditioned deluxe rooms near Kashi Vishwanath temple, authentic Andhra meals, vehicle fleet hire, and yatra packages covering Prayagraj, Ayodhya, Gaya, Mathura and Agra in Varanasi.",
   keywords: [
     "Kasi rooms",
     "Varanasi accommodation Telugu",
     "Kashi Vishwanath stay",
-    "Andhra food Varanasi",
+    "Andhra meals Varanasi",
+    "Andhra ashram Varanasi",
+    "Telugu travellers Kasi stay",
     "Kasi yatra package",
+    "Ayodhya Prayagraj Gaya tour from Varanasi",
+    "Varanasi tempo traveller bus hire",
+    "Panday Haweli Varanasi rooms",
     business.name,
+    business.shortName,
   ],
+  authors: [{ name: business.owner.name }],
+  creator: business.name,
+  publisher: business.name,
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: SITE_URL,
     siteName: business.name,
-    title: "Rooms and yatra packages in Kasi, with Andhra food",
+    title: `${business.name} | Rooms & Yatra Packages in Kasi`,
     description:
-      "Air-conditioned deluxe rooms a walk from Kashi Vishwanath, home-style Andhra meals, and yatra packages across the northern circuit.",
+      "Air-conditioned deluxe rooms close to Kashi Vishwanath, home-style Andhra meals, vehicle hire, and yatra packages across the northern pilgrimage circuit.",
+    images: [
+      {
+        url: "/images/kashi-temple.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${business.name} - Kashi Vishwanath and Yatra Services`,
+      },
+    ],
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: `${business.name} | Rooms & Yatra in Kasi`,
+    description:
+      "Air-conditioned rooms near Kashi Vishwanath, home-style Andhra meals, and all-inclusive yatra packages in Varanasi.",
+    images: ["/images/kashi-temple.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  other: {
+    "geo.region": "IN-UP",
+    "geo.placename": "Varanasi",
+    "geo.position": "25.3036;83.0076",
+    ICBM: "25.3036, 83.0076",
+  },
 };
 
 export default function RootLayout({ children }) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    name: business.name,
-    description:
-      "Air-conditioned deluxe rooms close to Kashi Vishwanath with Andhra meals, plus yatra packages and vehicle hire.",
-    telephone: business.phoneDisplay,
-    url: SITE_URL,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: `${business.address.line1}, ${business.address.line2}`,
-      addressLocality: business.address.city,
-      addressRegion: business.address.state,
-      postalCode: business.address.pincode,
-      addressCountry: "IN",
-    },
-    amenityFeature: [
-      "Air conditioning",
-      "Wi-Fi",
-      "Hot water",
-      "Lift",
-      "Car parking",
-    ].map((name) => ({
-      "@type": "LocationFeatureSpecification",
-      name,
-      value: true,
-    })),
+    "@graph": [
+      {
+        "@type": ["LodgingBusiness", "TravelAgency"],
+        "@id": `${SITE_URL}/#business`,
+        name: business.name,
+        alternateName: business.shortName,
+        description:
+          "Air-conditioned deluxe rooms close to Kashi Vishwanath with authentic home-style Andhra meals, plus yatra packages and private vehicle fleet hire for pilgrims.",
+        telephone: business.phoneDisplay,
+        url: SITE_URL,
+        image: `${SITE_URL}/images/kashi-temple.jpg`,
+        logo: `${SITE_URL}/images/logo-mark-transparent.png`,
+        priceRange: "₹₹",
+        currenciesAccepted: "INR",
+        paymentAccepted: "Cash, UPI, Bank Transfer",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: `${business.address.line1}, ${business.address.line2}`,
+          addressLocality: "Varanasi",
+          addressRegion: "Uttar Pradesh",
+          postalCode: business.address.pincode,
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 25.3036,
+          longitude: 83.0076,
+        },
+        hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          business.mapsQuery
+        )}`,
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: "00:00",
+            closes: "23:59",
+          },
+        ],
+        amenityFeature: [
+          "Air conditioning",
+          "Wi-Fi",
+          "Hot water round the clock",
+          "Lift access",
+          "Car parking",
+          "Andhra meals dining",
+          "Railway station pickup & drop",
+        ].map((name) => ({
+          "@type": "LocationFeatureSpecification",
+          name,
+          value: true,
+        })),
+        areaServed: [
+          { "@type": "City", name: "Varanasi" },
+          { "@type": "City", name: "Prayagraj" },
+          { "@type": "City", name: "Ayodhya" },
+          { "@type": "City", name: "Gaya" },
+          { "@type": "City", name: "Mathura" },
+          { "@type": "City", name: "Agra" },
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: business.name,
+        publisher: {
+          "@id": `${SITE_URL}/#business`,
+        },
+        inLanguage: "en-IN",
+      },
+    ],
   };
 
   return (

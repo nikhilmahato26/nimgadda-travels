@@ -47,9 +47,33 @@ export async function generateMetadata({ params }) {
   const room = await getRoomBySlug(slug);
   if (!room) return { title: "Room not found" };
 
+  const ogImage = room.gallery?.[0] || "/images/room-super-deluxe-1.jpg";
+
   return {
-    title: room.name,
-    description: `${room.summary} At Nimmagadda Vari Andhra Tours and Travels, Panday Haweli, Varanasi.`,
+    title: `${room.name} in Varanasi | AC Accommodation near Kashi Vishwanath`,
+    description: `${room.summary} ${room.occupancy}. Amenities include: ${room.amenities.slice(0, 5).join(", ")}. Book with Andhra meals in Panday Haweli, Varanasi.`,
+    alternates: {
+      canonical: `/rooms/${room.slug}`,
+    },
+    openGraph: {
+      title: `${room.name} | Nimmagadda Vari Varanasi`,
+      description: `${room.summary} ${room.occupancy}. Located in Panday Haweli, walking distance to Kashi Vishwanath temple.`,
+      url: `/rooms/${room.slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${room.name} - Nimmagadda Vari`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${room.name} in Varanasi | Nimmagadda Vari`,
+      description: room.summary,
+      images: [ogImage],
+    },
   };
 }
 
@@ -71,8 +95,61 @@ export default async function RoomDetailPage({ params }) {
     })),
   ];
 
+  const roomStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HotelRoom",
+        name: room.name,
+        description: room.summary,
+        occupancy: {
+          "@type": "QuantitativeValue",
+          value: room.occupancy,
+        },
+        amenityFeature: room.amenities.map((name) => ({
+          "@type": "LocationFeatureSpecification",
+          name,
+          value: true,
+        })),
+        photo: room.gallery?.map((img) => `https://nimmagaddavari.in${img}`),
+        provider: {
+          "@type": "LodgingBusiness",
+          name: "Nimmagadda Vari Andhra Tours and Travels",
+          url: "https://nimmagaddavari.in",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://nimmagaddavari.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Rooms",
+            item: "https://nimmagaddavari.in/rooms",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: room.name,
+            item: `https://nimmagaddavari.in/rooms/${room.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(roomStructuredData) }}
+      />
       <Section className="pb-0">
         <Container>
           <Link
