@@ -10,6 +10,7 @@ import {
   BedDouble,
   UtensilsCrossed,
   Milestone,
+  Users,
 } from "lucide-react";
 import { Container, Section } from "@/components/ui/Section";
 import { PackageCard } from "@/components/PackageCard";
@@ -17,6 +18,7 @@ import PackageBookingCard from "@/components/PackageBookingCard";
 import EnquiryForm from "@/components/EnquiryForm";
 import Reveal from "@/components/ui/Reveal";
 import { getPackages, getPackageBySlug } from "@/lib/content";
+import { packageGroupSize } from "@/data/packages";
 import { rupees } from "@/lib/utils";
 
 const UNCONFIRMED_DURATION = "Duration confirmed when you book";
@@ -46,7 +48,7 @@ export default async function PackageDetailPage({ params }) {
   const allPackages = await getPackages();
   const others = allPackages.filter((p) => p.slug !== pkg.slug);
 
-  // Quick facts, four tiles to match the icon-grid pattern used elsewhere on
+  // Quick facts, five tiles to match the icon-grid pattern used elsewhere on
   // the site (the room pages' "The space"). Duration and route status repeat
   // what is in the meta row above, which is normal for a page like this: the
   // meta row is the quick read, this grid is the scannable one.
@@ -58,6 +60,10 @@ export default async function PackageDetailPage({ params }) {
     },
     { icon: BedDouble, label: pkg.stay },
     { icon: UtensilsCrossed, label: pkg.meals },
+    {
+      icon: Users,
+      label: `${packageGroupSize.min} to ${packageGroupSize.max} travellers`,
+    },
   ];
 
   return (
@@ -84,6 +90,10 @@ export default async function PackageDetailPage({ params }) {
               {pkg.places
                 ? `${pkg.places[0]} to ${pkg.places[pkg.places.length - 1]}`
                 : "Route on request"}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Users size={15} strokeWidth={1.5} aria-hidden="true" />
+              {packageGroupSize.min} to {packageGroupSize.max} travellers
             </span>
           </div>
 
@@ -128,10 +138,14 @@ export default async function PackageDetailPage({ params }) {
                 </p>
 
                 <ul className="mt-6 grid grid-cols-2 gap-3">
-                  {quickFacts.map(({ icon: Icon, label }) => (
+                  {quickFacts.map(({ icon: Icon, label }, i) => (
                     <li
                       key={label}
-                      className="flex flex-col items-center gap-2 rounded-card border border-line bg-surface-3 px-4 py-5 text-center"
+                      className={`flex flex-col items-center gap-2 rounded-card border border-line bg-surface-3 px-4 py-5 text-center ${
+                        // Five tiles in a two-column grid: the last one spans
+                        // full width so the closing row has no empty cell.
+                        i === quickFacts.length - 1 ? "col-span-2" : ""
+                      }`}
                     >
                       <Icon
                         size={20}

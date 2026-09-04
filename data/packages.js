@@ -7,12 +7,18 @@
 //   2. Package 2 is quoted as "same as above" without repeating the route.
 // Replace the nulls once the client confirms, and the pages fill themselves in.
 
+// The same group size applies to every package, not a per-package figure, so
+// it lives here once rather than repeated on each object below. Shown on the
+// package detail page's meta row and quick facts, and sets the min/max on the
+// traveller count field in PackageBookingCard.
+export const packageGroupSize = { min: 4, max: 20 };
+
 export const packages = [
   {
     slug: "grand-yatra",
     name: "Grand Yatra",
     order: 1,
-    pricePerPerson: 14500,
+    pricePerPerson: 16500,
     duration: null,
     needsConfirmation: ["duration"],
     image: "/images/prayagraj.jpg",
@@ -36,7 +42,7 @@ export const packages = [
     slug: "kasi-yatra",
     name: "Kasi Yatra",
     order: 2,
-    pricePerPerson: 9500,
+    pricePerPerson: 13500,
     duration: "5 Days / 6 Nights",
     needsConfirmation: ["places"],
     image: "/images/ganga-aarti.jpg",
@@ -60,7 +66,7 @@ export const packages = [
     slug: "prayag-ayodhya-gaya",
     name: "Prayag, Ayodhya and Gaya",
     order: 3,
-    pricePerPerson: 7500,
+    pricePerPerson: 12500,
     duration: "5 Days / 6 Nights",
     needsConfirmation: [],
     image: "/images/gaya.jpg",

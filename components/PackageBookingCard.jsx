@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import { business } from "@/data/business";
+import { packageGroupSize } from "@/data/packages";
 import { rupees } from "@/lib/utils";
 
 /*
@@ -55,8 +56,10 @@ export default function PackageBookingCard({ packageName, pricePerPerson }) {
           id="pkg-travellers"
           label="People travelling"
           type="number"
-          min="1"
+          min={packageGroupSize.min}
+          max={packageGroupSize.max}
           placeholder="Add travellers"
+          hint={`Groups of ${packageGroupSize.min} to ${packageGroupSize.max}`}
           value={travellers}
           onChange={setTravellers}
         />
@@ -105,7 +108,7 @@ export default function PackageBookingCard({ packageName, pricePerPerson }) {
   );
 }
 
-function Field({ id, label, value, onChange, ...props }) {
+function Field({ id, label, value, onChange, hint, ...props }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-[13px] font-semibold text-text">
@@ -115,9 +118,15 @@ function Field({ id, label, value, onChange, ...props }) {
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        aria-describedby={hint ? `${id}-hint` : undefined}
         className="h-11 rounded-pill border border-line bg-surface px-4 text-[15px] text-text placeholder:text-muted"
         {...props}
       />
+      {hint ? (
+        <p id={`${id}-hint`} className="text-[12px] text-muted">
+          {hint}
+        </p>
+      ) : null}
     </div>
   );
 }
