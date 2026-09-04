@@ -1,4 +1,5 @@
 import { Phone, MessageCircle, MapPin } from "lucide-react";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 import PageHeader from "@/components/site/PageHeader";
 import { Container, Section } from "@/components/ui/Section";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -57,6 +58,20 @@ export default function ContactPage() {
       external: true,
     },
     {
+      icon: InstagramIcon,
+      title: "Instagram",
+      body: "@nimmagaddas12345 · Photos and updates",
+      href: business.social.instagram,
+      external: true,
+    },
+    {
+      icon: FacebookIcon,
+      title: "Facebook",
+      body: "Connect with us on Facebook",
+      href: business.social.facebook,
+      external: true,
+    },
+    {
       icon: MapPin,
       title: "Panday Haweli, Varanasi",
       body: addressLines.join(", "),
@@ -76,6 +91,7 @@ export default function ContactPage() {
           "@type": "LodgingBusiness",
           name: business.name,
           telephone: business.phoneDisplay,
+          sameAs: [business.social.instagram, business.social.facebook],
           address: {
             "@type": "PostalAddress",
             streetAddress: `${business.address.line1}, ${business.address.line2}`,

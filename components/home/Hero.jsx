@@ -1,5 +1,7 @@
 import Image from "next/image";
 import HeroSearchCard from "./HeroSearchCard";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
+import { business } from "@/data/business";
 
 /*
   Inset photograph with rounded corners, the nav floating over it, centred copy
@@ -32,9 +34,32 @@ export default function Hero() {
 
         <div className="mx-auto flex min-h-[42rem] w-full max-w-7xl flex-col justify-end px-5 pb-6 pt-28 sm:px-8 lg:min-h-[46rem] lg:pt-24">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="enter inline-flex rounded-pill bg-white/15 px-4 py-1.5 text-[13px] font-semibold text-white backdrop-blur-sm">
-              Kasi, Tirupathi and Arunachalam
-            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <span className="enter inline-flex items-center rounded-pill bg-white/15 px-4 py-2 text-[14px] font-semibold text-white backdrop-blur-sm">
+                Kasi, Tirupathi and Arunachalam
+              </span>
+
+              <div className="enter inline-flex items-center gap-2 rounded-pill bg-white/20 px-2.5 py-1.5 backdrop-blur-md shadow-sm">
+                <a
+                  href={business.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-pill bg-white/20 text-white transition-all hover:bg-white hover:text-ink hover:scale-110 active:scale-95"
+                >
+                  <InstagramIcon size={20} strokeWidth={1.8} />
+                </a>
+                <a
+                  href={business.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-pill bg-white/20 text-white transition-all hover:bg-white hover:text-ink hover:scale-110 active:scale-95"
+                >
+                  <FacebookIcon size={20} strokeWidth={1.8} />
+                </a>
+              </div>
+            </div>
 
             <h1 style={{ "--enter-step": 1 }} className="enter hero-copy mt-6 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Stay a Walk from Kashi Vishwanath

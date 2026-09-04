@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 import { business, addressLines } from "@/data/business";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { BrandLockup } from "./BrandMark";
@@ -46,7 +47,7 @@ export default function Footer() {
               Rooms, meals and travels for pilgrims in Kasi, run by one
               family. Serving the Kasi, Tirupathi and Arunachalam circuit.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={business.phoneTel}
                 className="inline-flex items-center gap-2 rounded-pill bg-accent px-5 py-2.5 text-[14px] font-bold text-on-accent transition-all hover:brightness-95"
@@ -62,6 +63,24 @@ export default function Footer() {
               >
                 <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
                 WhatsApp
+              </a>
+              <a
+                href={business.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-pill border border-line text-muted transition-colors hover:border-ink hover:text-text"
+              >
+                <InstagramIcon size={17} strokeWidth={1.5} />
+              </a>
+              <a
+                href={business.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-pill border border-line text-muted transition-colors hover:border-ink hover:text-text"
+              >
+                <FacebookIcon size={17} strokeWidth={1.5} />
               </a>
             </div>
           </div>
@@ -86,7 +105,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-display text-[14px] font-extrabold tracking-tight">
-              Visit
+              Visit & Follow
             </h3>
             <ul className="mt-5 space-y-3">
               <li>
@@ -98,6 +117,28 @@ export default function Footer() {
                 >
                   <MapPin size={15} strokeWidth={1.5} aria-hidden="true" />
                   Get directions
+                </a>
+              </li>
+              <li>
+                <a
+                  href={business.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[15px] text-muted transition-colors hover:text-text"
+                >
+                  <InstagramIcon size={15} strokeWidth={1.5} />
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href={business.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[15px] text-muted transition-colors hover:text-text"
+                >
+                  <FacebookIcon size={15} strokeWidth={1.5} />
+                  Facebook
                 </a>
               </li>
               <li>

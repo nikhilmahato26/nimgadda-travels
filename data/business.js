@@ -41,6 +41,11 @@ export const business = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
+
+  social: {
+    instagram: "https://www.instagram.com/nimmagaddas12345?igsi=MTZ3Ymw4amFsN2J3ZA==",
+    facebook: "https://www.facebook.com/p/TN-Venkata-Krishna-Nimmagadda-61593457821250/",
+  },
 };
 
 export const addressLines = [

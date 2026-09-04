@@ -101,6 +101,7 @@ export default function RootLayout({ children }) {
           "Air-conditioned deluxe rooms close to Kashi Vishwanath with authentic home-style Andhra meals, plus yatra packages and private vehicle fleet hire for pilgrims.",
         telephone: business.phoneDisplay,
         url: SITE_URL,
+        sameAs: [business.social.instagram, business.social.facebook],
         image: `${SITE_URL}/images/kashi-temple.jpg`,
         logo: `${SITE_URL}/images/logo-mark-transparent.png`,
         priceRange: "₹₹",
