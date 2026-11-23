@@ -68,6 +68,9 @@ export default function PackagesSection({ packages }) {
 
                   <div className="mt-auto flex items-end justify-between gap-4 pt-6">
                     <p>
+                      <span className="text-[12px] font-medium text-muted">
+                        from{" "}
+                      </span>
                       <span className="font-display text-xl font-extrabold tracking-tight">
                         {rupees(pkg.pricePerPerson)}
                       </span>

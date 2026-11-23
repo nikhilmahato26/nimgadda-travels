@@ -18,11 +18,16 @@ import PackageBookingCard from "@/components/PackageBookingCard";
 import EnquiryForm from "@/components/EnquiryForm";
 import Reveal from "@/components/ui/Reveal";
 import { getPackages, getPackageBySlug } from "@/lib/content";
-import { packageGroupSize } from "@/data/packages";
+import { packageGroupSize, packageStayTiers } from "@/data/packages";
 import { rupees } from "@/lib/utils";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 const UNCONFIRMED_DURATION = "Duration confirmed when you book";
+
+const tierPrices = packageStayTiers.map((t) => t.pricePerPerson);
+const lowPrice = Math.min(...tierPrices);
+const highPrice = Math.max(...tierPrices);
+const priceRange = `${rupees(lowPrice)} to ${rupees(highPrice)}`;
 
 export async function generateStaticParams() {
   const packages = await getPackages();
@@ -39,13 +44,13 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${pkg.name} | Kasi Yatra Pilgrimage Package`,
-    description: `${pkg.summary} Price: ${rupees(pkg.pricePerPerson)} per person with AC rooms, authentic Andhra meals, and vehicle transport included.`,
+    description: `${pkg.summary} ${priceRange} per person by room category, with breakfast, lunch, dinner and vehicle transport included.`,
     alternates: {
       canonical: `/packages/${pkg.slug}`,
     },
     openGraph: {
       title: `${pkg.name} | Nimmagadda Vari Yatra Packages`,
-      description: `${pkg.summary} Includes AC accommodation, Andhra meals, and transfers. All taxes included.`,
+      description: `${pkg.summary} AC, Deluxe or Premium rooms, all meals and transport. All taxes included.`,
       url: `/packages/${pkg.slug}`,
       images: [
         {
@@ -59,7 +64,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title: `${pkg.name} | Kasi Yatra Package`,
-      description: `${pkg.summary} ${rupees(pkg.pricePerPerson)} per person.`,
+      description: `${pkg.summary} ${priceRange} per person.`,
       images: [ogImage],
     },
   };
@@ -100,11 +105,19 @@ export default async function PackageDetailPage({ params }) {
         description: pkg.summary,
         image: pkg.image ? absoluteUrl(pkg.image) : undefined,
         offers: {
-          "@type": "Offer",
-          price: pkg.pricePerPerson,
+          "@type": "AggregateOffer",
+          lowPrice,
+          highPrice,
+          offerCount: packageStayTiers.length,
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
           url: absoluteUrl(`/packages/${pkg.slug}`),
+          offers: packageStayTiers.map((t) => ({
+            "@type": "Offer",
+            name: `${pkg.name}, ${t.name}`,
+            price: t.pricePerPerson,
+            priceCurrency: "INR",
+          })),
           seller: {
             "@type": "TravelAgency",
             name: "Nimmagadda Vari Andhra Tours and Travels",
@@ -325,10 +338,7 @@ export default async function PackageDetailPage({ params }) {
             </div>
 
             <aside className="lg:sticky lg:top-24">
-              <PackageBookingCard
-                packageName={pkg.name}
-                pricePerPerson={pkg.pricePerPerson}
-              />
+              <PackageBookingCard packageName={pkg.name} />
             </aside>
           </div>
         </Container>

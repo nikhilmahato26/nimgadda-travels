@@ -19,9 +19,11 @@ function DurationLine({ pkg, className }) {
   );
 }
 
+// Packages are priced by room category, so cards show the lowest tier.
 export function PackagePrice({ amount, className = "" }) {
   return (
     <p className={className}>
+      <span className="text-[14px] font-medium text-muted">from</span>{" "}
       <span className="font-display text-3xl font-extrabold tracking-tight">
         {rupees(amount)}
       </span>{" "}

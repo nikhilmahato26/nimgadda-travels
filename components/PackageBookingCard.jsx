@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import { business } from "@/data/business";
-import { packageGroupSize } from "@/data/packages";
+import { packageGroupSize, packageStayTiers } from "@/data/packages";
 import { rupees } from "@/lib/utils";
 
 /*
@@ -15,10 +15,18 @@ import { rupees } from "@/lib/utils";
   The estimate is real arithmetic on a real disclosed rate, not an invented
   number, and is labelled "estimated" rather than "total" since the final
   figure is always confirmed on the call.
+
+  The per person rate depends on the room category, so the guest picks one
+  first and the headline price, estimate and message all follow it.
 */
-export default function PackageBookingCard({ packageName, pricePerPerson }) {
+export default function PackageBookingCard({ packageName }) {
+  const [tierId, setTierId] = useState(packageStayTiers[0].id);
   const [travellers, setTravellers] = useState("");
   const [arrival, setArrival] = useState("");
+
+  const tier =
+    packageStayTiers.find((t) => t.id === tierId) ?? packageStayTiers[0];
+  const pricePerPerson = tier.pricePerPerson;
 
   const count = Number(travellers);
   const estimate =
@@ -27,6 +35,7 @@ export default function PackageBookingCard({ packageName, pricePerPerson }) {
   function buildMessage() {
     const parts = [
       `Namaste, I would like to book the ${packageName} package at ${business.shortName} in Kasi.`,
+      `Room: ${tier.name} (${rupees(pricePerPerson)} per person).`,
     ];
     if (travellers) parts.push(`${travellers} people travelling.`);
     if (arrival) parts.push(`Arriving around ${arrival}.`);
@@ -48,10 +57,50 @@ export default function PackageBookingCard({ packageName, pricePerPerson }) {
         </span>
       </p>
       <p className="mt-1 text-[13px] text-muted">
-        All taxes included. Special darshan tickets are extra.
+        All meals, transport and taxes included. Special darshan tickets are
+        extra.
       </p>
 
-      <div className="mt-5 grid gap-3 border-t border-line pt-5">
+      <fieldset className="mt-5 border-t border-line pt-5">
+        <legend className="text-[13px] font-semibold text-text">
+          Room category
+        </legend>
+        <div className="mt-2 grid gap-2">
+          {packageStayTiers.map((t) => {
+            const selected = t.id === tier.id;
+            return (
+              <label
+                key={t.id}
+                className={`flex cursor-pointer items-center justify-between gap-3 rounded-card border px-4 py-3 transition-colors ${
+                  selected
+                    ? "border-accent-ink bg-surface-2"
+                    : "border-line hover:border-ink"
+                }`}
+              >
+                <span className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    name="pkg-tier"
+                    value={t.id}
+                    checked={selected}
+                    onChange={() => setTierId(t.id)}
+                    className="accent-[var(--color-accent-ink)]"
+                  />
+                  <span className="flex flex-col">
+                    <span className="text-[14px] font-semibold">{t.name}</span>
+                    <span className="text-[12px] text-muted">{t.detail}</span>
+                  </span>
+                </span>
+                <span className="shrink-0 text-[14px] font-bold">
+                  {rupees(t.pricePerPerson)}
+                </span>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
+
+      <div className="mt-5 grid gap-3">
         <Field
           id="pkg-travellers"
           label="People travelling"
